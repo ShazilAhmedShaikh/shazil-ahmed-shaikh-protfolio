@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shazil Ahmed Shaikh — Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <canvas id="particles-canvas"></canvas>
+
+    <aside id="side-panel">
+        <div class="panel-content">
+            <header>
+                <div>
+                    <h1>Shazil Ahmed Shaikh</h1>
+                    <p class="tagline">Software Developer</p>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle between dark and light themes">
+                    <span class="theme-icon">🔆</span>
+                </button>
+            </header>
+
+            <nav class="main-nav">
+                <ul id="nav-links" class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact" id="contact-btn">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" aria-controls="side-panel" aria-expanded="false"
+                aria-label="Open navigation menu">
+                &#9776;
+            </button>
+        </div>
+    </aside>
+
+
+    <main id="main-content">
+        <div class="content-wrapper">
+
+            <section id="hero" class="section hero-section fade-in">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        
+                       <h1 class="hero-title">
+    				Hi, it's <span class="hero-name">Shazil Ahmed Shaikh</span>
+			</h1>
+
+                        <h3 class="hero-secondary-title">
+                            I am a <span id="typewriter-text"></span><span class="cursor">|</span>
+                        </h3>
+
+                        <p class="hero-description">
+                            A problem-solving–focused <strong>Software Developer</strong> skilled in debugging and writing 			    clean, custom code. I work with Python, C++, Java, and web technologies to build efficient, 			     practical applications. Currently focused on <strong>Full-Stack Development</strong> and
+                            <strong>Game Engine scripting</strong> using modern frameworks.
+                        </p>
+                    </div>
+
+                    <div class="hero-image">
+                        <img src="profile.jpg" alt="" />
+                    </div>
+                </div>
+
+                <a href="#about" class="scroll-down" aria-label="Scroll down to About section">
+                    <div class="arrow"></div>
+                </a>
+            </section>
+
+
+            <section id="about" class="section fade-in about-section">
+                <div class="about-container">
+                    <div class="about-text">
+                        <h2>About Me</h2>
+                        <p>Hi, I’m <strong>Shazil Ahmed Shaikh</strong>. I’m Shazil Ahmed Shaikh, a dedicated software        developer specializing in Python, C++, Java, and full-stack web development. I have a strong focus on problem-solving, debugging, and crafting clean, custom code to deliver efficient and user-friendly applications. My portfolio includes projects like Musiffy (an offline music player), a desktop To-Do task manager, and Godot game prototypes. I thrive on turning ideas into functional solutions, exploring new technologies, and continuously enhancing my skills to create scalable and practical software</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="profile1.jpg" alt="Shazil Ahmed Shaikh" />
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="projects" class="section fade-in">
+                <h2>Projects</h2>
+                <div class="projects-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="game">Game</button>
+                    <button class="filter-btn" data-filter="other">Other</button>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card fade-in-item" data-category="web">
+                        <h3>Project 1 — Web Scrapping</h3>
+                        <p>Python web scraping tool that extracts website data and converts it into structured Excel tables using pandas for efficient data automation..</p>
+
+                        <ul class="tech-stack">
+                            <li>Python</li>
+                            <li>Pandas library</li>
+                            <li>BeautifulSoup</li>
+                        </ul>
+
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live ↗</a>
+                            <a href="#" target="_blank">Code ⚙️</a>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in-item" data-category="game">
+                        <h3>Project 2 — 2D Platform Game</h3>
+                        <p>Space shooting game based on 2d built in c++ including gui</p>
+                        <ul class="tech-stack">
+                            <li>C++</li>
+                            <li>Basic Programming</li>
+                            <li>Godot</li>
+			    <li>Data Structures</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Download ⬇️</a>
+                            <a href="#" target="_blank">Code ⚙️</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in-item" data-category="other">
+                        <h3>Project 3 — Musiffy – Offline Music Player</h3>
+                        <p>Offline music player built in Java using Swing, leveraging OOP and data structures for efficient playlist management and smooth performance</p>
+                        <ul class="tech-stack">
+                            <li>Java</li>
+                            <li>Java Swing</li>
+                            <li>OOP</li>
+			    <li>Data Structures</li>
+
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Details ℹ️</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="section fade-in">
+                <h2>Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h3>Languages & Core</h3>
+                        <ul class="skills-list">
+                            <li>C#</li>
+                            <li>C++</li>
+                            <li>Java</li>
+                            <li>Python</li>
+			    
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Frameworks & Engines</h3>
+                        <ul class="skills-list">
+                            <li>Unreal Engine (C++)</li>
+                            <li>Godot (GDScript)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Databases & Tools</h3>
+                        <ul class="skills-list">
+			    <li>SQL</li>
+                            <li>Java Swing</li>
+                            <li>Pandas</li>
+                            <li>Git / GitHub</li>
+			    <li>Figma/Canva</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section id="contact" class="section fade-in">
+                <h2>Get In Touch</h2>
+                <p>I'm currently <strong>open for new opportunities</strong>. Send me a message, and I'll get back to
+                    you!</p>
+                <button id="open-modal" class="filter-btn">Send Message</button>
+            </section>
+        </div>
+
+        <footer>
+            <p>© 2025 Shazil Ahmed Shaikh.</p>
+		<div class="footer-container">
+    <a href="https://www.linkedin.com/in/your-linkedin"  target="_blank" class="footer-icon linkedin"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="30" height="30">
+
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://github.com/your-github" target="_blank" class="footer-icon github">
+      <i class="fab fa-github"></i><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="30" height="30">
+    </a>
+  </div>
+        </footer>
+    </main>
+
+    <div class="modal" id="contact-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <h3>Contact Me</h3>
+            <form id="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" required />
+                <label for="email">Email</label>
+                <input type="email" id="email" required />
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+	
+
+
+    <script src="main.js" defer></script>
+</body>
+
+</html>
