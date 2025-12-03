@@ -187,7 +187,7 @@ class Particle {
     }
 }
 
-function initParticles(count = 70) { // was 100
+function initParticles(count = 100) { // was 100
     particles = [];
     for (let i = 0; i < count; i++) {
         particles.push(new Particle());
@@ -253,6 +253,62 @@ function animateParticles() {
     requestAnimationFrame(animateParticles);
 }
 
+
+
+
+
+
+
+
+
+
+// Hover play / pause inside card videos
+document.querySelectorAll(".project-card video").forEach(video => {
+    const card = video.closest(".project-card");
+
+    card.addEventListener("mouseenter", () => video.play());
+    card.addEventListener("mouseleave", () => {
+        video.pause();
+        video.currentTime = 0;
+    });
+
+    // Click → open fullscreen modal
+    card.addEventListener("click", () => {
+        const modal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+
+        modal.style.display = "flex";
+        modalVideo.src = video.src;
+        modalVideo.play();
+    });
+});
+
+// Close modal on background click
+document.getElementById("videoModal").addEventListener("click", (e) => {
+    if (e.target.id === "videoModal") {
+        const modal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+
+        modal.style.display = "none";
+        modalVideo.pause();
+        modalVideo.src = "";
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // --- Initialize ---
 updateParticleColor();
 initParticles();
@@ -301,6 +357,8 @@ function typeEffect() {
     setTimeout(typeEffect, typeSpeed);
 }
 
+
+
 // Start the animation when page loads
 document.addEventListener('DOMContentLoaded', typeEffect);
 
@@ -328,3 +386,4 @@ function initializeNavbarScrollWatcher() {
 
 // Ensure this runs after the main initializers
 window.addEventListener('load', initializeNavbarScrollWatcher);
+
