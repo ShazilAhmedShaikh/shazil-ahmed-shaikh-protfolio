@@ -1,290 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shazil Ahmed Shaikh — Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shazil Ahmed Shaikh Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <a href="https://wa.me/03113117472?text=Hi%20Shazil Ahmed Shaikh,%20I%20saw%20your%20portfolio" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <canvas id="particles-canvas"></canvas>
 
-    <aside id="side-panel">
-        <div class="panel-content">
-            <header>
-                <div>
-                    <h1>Shazil Ahmed Shaikh</h1>
-                    <p class="tagline">Software Developer</p>
-                </div>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle between dark and light themes">
-                    <span class="theme-icon">🔆</span>
-                </button>
-            </header>
-
-            <nav class="main-nav">
-                <ul id="nav-links" class="nav-links">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact" id="contact-btn">Contact</a></li>
-                </ul>
-            </nav>
-
-            <button class="menu-toggle" aria-controls="side-panel" aria-expanded="false"
-                aria-label="Open navigation menu">
-                &#9776;
-            </button>
+    <nav class="navbar">
+        <div class="logo">SHAZIL AHMED SHAIKH<span class="dot">.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Projects</a></li> <li><a href="#achievements">Awards</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
         </div>
-    </aside>
+    </nav>
 
+    <section class="hero" id="home">
+        
+        <div class="hero-content">
+            <h3>Hi, It's <span class="text-highlight">Shazil Ahmed</span></h3>
+            <h1>I'm a <span class="typing-text">Developer</span></h1>
+            <p>
+                Expert in Python Automation, Data Scraping, and Full Stack Development. 
+                Creating efficient solutions for complex problems.
+            </p>
+            
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/shazil-ahmed-cs-054a53329/"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/ShazilAhmedShaikh"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/shazilahmedshaikh/"><i class="fab fa-instagram"></i></a>
+            </div>
 
-    <main id="main-content">
-        <div class="content-wrapper">
-
-            <section id="hero" class="section hero-section fade-in">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        
-                       <h1 class="hero-title">
-    				Hi, it's <span class="hero-name">Shazil Ahmed Shaikh</span>
-			</h1>
-
-                        <h3 class="hero-secondary-title">
-                            I am a <span id="typewriter-text"></span><span class="cursor">|</span>
-                        </h3>
-
-                        <p class="hero-description">
-                            A problem-solving–focused <strong>Software Developer</strong> skilled in debugging and writing 			    clean, custom code. I work with Python, 			C++, Java, and web technologies to build efficient, 			     practical applications. Currently focused on <strong>Full-Stack Development</strong> and
-                            <strong>Game Engine scripting</strong> using modern frameworks.
-                        </p>
-                    </div>
-
-                    <div class="hero-image">
-                        <img src="profile.jpg" alt="" />
-                    </div>
-                </div>
-
-                <a href="#about" class="scroll-down" aria-label="Scroll down to About section">
-                    <div class="arrow"></div>
-                </a>
-            </section>
-
-
-            <section id="about" class="section fade-in about-section">
-                <div class="about-container">
-                    <div class="about-text">
-                        <h2>About Me</h2>
-                        <p>Hi, I’m <strong>Shazil Ahmed Shaikh</strong>. I’m Shazil Ahmed Shaikh, a dedicated software        developer specializing in Python, C++, Java, and full-stack web development. I have a strong focus on problem-solving, debugging, and crafting clean, custom code to deliver efficient and user-friendly applications. My portfolio includes projects like Musiffy (an offline music player), a desktop To-Do task manager, and Godot game prototypes. I thrive on turning ideas into functional solutions, exploring new technologies, and continuously enhancing my skills to create scalable and practical software</p>
-                    </div>
-                    <div class="about-image">
-                        <img src="profile1.jpg" alt="Shazil Ahmed Shaikh" />
-                    </div>
-                </div>
-            </section>
-
-<section id="services">
-  <h2 class="section-title">Services I Provide</h2>
-  <div class="services-grid">
-    <div class="service-card" onclick="window.location.href='https://www.fiverr.com/s/qDBXQ3V';">
-      <h3>Web Scraping</h3>
-    </div>
-    <div class="service-card" onclick="window.location.href='https://www.fiverr.com/s/qDBXQ3V';">
-      <h3>Python Scripting</h3>
-    </div>
-    <div class="service-card" onclick="window.location.href='https://www.fiverr.com/s/kL4EmNQ';">
-      <h3>Custom Software Development</h3>
-    </div>
-    <div class="service-card">
-      <h3>Build Business Websites</h3>
-    </div>
-    <div class="service-card"  onclick="window.location.href='https://www.fiverr.com/s/Ke4AYQ2';">
-      <h3>Debugging the Code</h3>
-    </div>
-    <div class="service-card"  onclick="window.location.href='https://www.fiverr.com/s/Ke4AYQ2';">
-      <h3>Guide Assignments & Projects</h3>
-    </div>
-  </div>
-</section>
-
-
-
-		
-            <section id="projects" class="section fade-in">
-                <h2>Projects</h2>
-                <div class="projects-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="web">Web</button>
-                    <button class="filter-btn" data-filter="game">Game</button>
-                    <button class="filter-btn" data-filter="other">Other</button>
-                </div>
-                <div class="projects-grid">
-                    <div class="project-card fade-in-item" data-category="web">
-
-			 <video class="project-video" muted loop>
-        			<source src="web scraping.mp4" type="video/mp4">
-    			</video>
-                        <h3>Project 1 — Web Scrapping</h3>
-                        <p>Python web scraping tool that extracts website data and converts it into structured Excel tables using pandas for efficient data automation..</p>
-
-                        <ul class="tech-stack">
-                            <li>Python</li>
-                            <li>Pandas library</li>
-                            <li>BeautifulSoup</li>
-                        </ul>
-
-                        <div class="project-links">
-                            <a href="#" target="_blank">Live ↗</a>
-                            <a href="#" target="_blank">Code ⚙️</a>
-                        </div>
-                    </div>
-                    <div class="project-card fade-in-item" data-category="game">
-
-			
-
-                        <h3>Project 2 — 2D Platform Game</h3>
-                        <p>Space shooting game based on 2d built in c++ including gui</p>
-                        <ul class="tech-stack">
-                            <li>C++</li>
-                            <li>Basic Programming</li>
-                            <li>Godot</li>
-			    <li>Data Structures</li>
-                        </ul>
-                        <div class="project-links">
-                            <a href="#" target="_blank">Download ⬇️</a>
-                            <a href="#" target="_blank">Code ⚙️</a>
-                        </div>
-                    </div>
-
-        <div class="project-card fade-in-item" data-category="other">
-			
-
-			<video class="project-video" muted loop>
-        			<source src="musiffy.mp4" type="video/mp4">
-    			</video>				
-
-                        <h3>Project 3 — Musiffy – Offline Music Player</h3>
-                        <p>Offline music player built in Java using Swing, leveraging OOP and data structures for efficient playlist management and smooth performance</p>
-                        <ul class="tech-stack">
-                            <li>Java</li>
-                            <li>Java Swing</li>
-                            <li>OOP</li>
-			    <li>Data Structures</li>
-
-                        </ul>
-                        <div class="project-links">
-                            <a href="#" target="_blank">Details ℹ️</a>
-                        </div>
-        </div>
-
-<div class="project-card fade-in-item" data-category="game">
-
-			<video class="project-video" muted loop>
-        			<source src="particle system1.mp4" type="video/mp4">
-    			</video>
-
-                        <h3>Project 4 — 3D Particle System</h3>
-                        <p>An interactive web-based 3D particle system controlled in real-time through hand gestures</p>
-                        <ul class="tech-stack">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>JAVA SCRIPT</li>
-			</ul>
-                        <div class="project-links">
-                            <a href="#" target="_blank">Download ⬇️</a>
-                            <a href="#" target="_blank">Code ⚙️</a>
-                        </div>
-                    </div>
-
-					
-                </div>
-            </section>
-
-            <section id="skills" class="section fade-in">
-                <h2>Skills</h2>
-                <div class="skills-container">
-                    <div class="skill-group">
-                        <h3>Languages & Core</h3>
-                        <ul class="skills-list">
-                            <li>C#</li>
-                            <li>C++</li>
-                            <li>Java</li>
-                            <li>Python</li>
-			    
-                        </ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Frameworks & Engines</h3>
-                        <ul class="skills-list">
-                            <li>Unreal Engine (C++)</li>
-                            <li>Godot (GDScript)</li>
-                        </ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Databases & Tools</h3>
-                        <ul class="skills-list">
-			    <li>SQL</li>
-                            <li>Java Swing</li>
-                            <li>Pandas</li>
-                            <li>Git / GitHub</li>
-			    <li>Figma/Canva</li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-
-		
-
-
-
-            <section id="contact" class="section fade-in">
-                <h2>Get In Touch</h2>
-                <p>I'm currently <strong>open for new opportunities</strong>. Send me a message, and I'll get back to
-                    you!</p>
-                <button id="open-modal" class="filter-btn">Send Message</button>
-            </section>
-        </div>
-
-        <footer>
-            <p>© 2025 Shazil Ahmed Shaikh.</p>
-		<div class="footer-container">
-    <a href="https://pk.linkedin.com/in/shazil-ahmed-cs-054a53329?trk=people-guest_people_search-card"  target="_blank" class="footer-icon linkedin"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="30" height="30">
-
-      <i class="fab fa-linkedin-in"></i>
+           <div class="hero-btns">
+    
+    <a href="#contact" class="btn-hire">Hire Me</a>
+    
+    <a href="my-resume.pdf" download class="btn-hire">
+        Download CV <i class="fas fa-download"></i>
     </a>
-    <a href="https://github.com/your-github" target="_blank" class="footer-icon github">
-      <i class="fab fa-github"></i><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="30" height="30">
-    </a>
-  </div>
-        </footer>
-    </main>
 
-    <div class="modal" id="contact-modal">
-        <div class="modal-content">
-            <span class="modal-close" id="modal-close">&times;</span>
-            <h3>Contact Me</h3>
-            <form id="contact-form">
-                <label for="name">Name</label>
-                <input type="text" id="name" required />
-                <label for="email">Email</label>
-                <input type="email" id="email" required />
-                <label for="message">Message</label>
-                <textarea id="message" rows="5" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </div>
-    </div>
-	
-
-	<div id="videoModal">
-    <video id="modalVideo" controls></video>
 </div>
+        </div>
 
-    <script src="main.js" defer></script>
+        <div class="hero-image">
+            <div class="glow-circle"></div>
+            <img src="profile1.JPG" alt="Profile Picture">
+        </div>
+
+    </section>
+
+   <section class="services" id="services">
+    <h2 class="section-title">My <span class="text-highlight">Services</span></h2>
+    
+
+    <div class="services-container">
+            
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Automation & AI</h3>
+                <p>Building custom bots, automating repetitive workflows, and integrating AI models to save manual effort.</p>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>Creating responsive, high-speed websites using Modern JavaScript, React, and clean backend architectures.</p>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>Data Scraping</h3>
+                <p>Extracting complex data from websites and PDFs (OCR), converting it into structured Excel/CSV formats.</p>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>Game Development</h3>
+                <p>Developing interactive 3D browser games using PlayCanvas and JavaScript with realistic physics.</p>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class="fab fa-java"></i>
+                </div>
+                <h3>Java App Dev</h3>
+                <p>Building robust desktop applications and scalable backend systems using Object-Oriented principles.</p>
+            </div>
+
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3>Python Expert</h3>
+                <p>Advanced scripting, API integrations, and solving complex logic problems with efficient Python code.</p>
+            </div>
+
+        </div>
+
+	</section>
+
+    <section class="projects" id="portfolio">
+        <h2 class="section-title">My Latest <span class="text-highlight">Projects</span></h2>
+
+        <div class="projects-container">
+            
+            <div class="project-card">
+                <div class="project-media">
+                    <video src="sphere parkour.mp4" autoplay loop muted playsinline poster="game-poster.jpg"></video>
+                </div>
+                <div class="project-content">
+                    <h3>Sphere Parkour Game</h3>
+                    <p>3D browser game with realistic physics. Features multiple levels (Space, Lava) and smooth controls.</p>
+                    <div class="tech-stack">
+                        <span>PlayCanvas</span> <span>JS</span> <span>Physics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-outline">GitHub</a>
+                        <a href="https://playcanv.as/b/3afb6c0d" class="btn-fill">Play Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-media">
+                    <video src="web scraping.mp4" autoplay loop muted playsinline poster="scraper-poster.jpg"></video>
+                </div>
+                <div class="project-content">
+                    <h3>PDF to Excel Scraper</h3>
+                    <p>Automated tool that extracts voter data from scanned PDFs using OCR and saves it to Excel.</p>
+                    <div class="tech-stack">
+                        <span>Python</span> <span>OCR</span> <span>Pandas</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-outline">GitHub</a>
+                        <a href="#" class="btn-fill">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-media">
+                    <video src="particle system1.mp4" autoplay loop muted playsinline poster="gesture-poster.jpg"></video>
+                </div>
+                <div class="project-content">
+                    <h3>Hand Gesture Particles</h3>
+                    <p>Control 3D particles via webcam hand movements. Built with Computer Vision and WebGL.</p>
+                    <div class="tech-stack">
+                        <span>OpenCV</span> <span>Three.js</span> <span>AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-outline">GitHub</a>
+                        <a href="#" class="btn-fill">Watch Demo</a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="project-card">
+                <div class="project-media">
+                    <video src="musiffy.mp4" autoplay loop muted playsinline poster="music-poster.jpg"></video>
+                </div>
+                <div class="project-content">
+                    <h3>Modern Music Player</h3>
+                    <p>Sleek music player with playlist management and audio visualization features.</p>
+                    <div class="tech-stack">
+                        <span>Java</span> <span>Java Swing</span> 
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-outline">GitHub</a>
+                        <a href="#" class="btn-fill">Live App</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-media">
+                    <video src="web portfolio.mp4" autoplay loop muted playsinline poster="portfolio-poster.jpg"></video>
+                </div>
+                <div class="project-content">
+                    <h3>Developer Portfolio</h3>
+                    <p>This responsive website built with clean code to showcase skills and projects.</p>
+                    <div class="tech-stack">
+                        <span>HTML5</span> <span>CSS3</span> <span>JS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-outline">Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <h2 class="section-title">My <span class="text-highlight">Skills</span></h2>
+
+        <div class="skills-content">
+            
+            <div class="skills-column">
+                <h3 class="column-title">Coding Languages</h3>
+
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <p>Python</p>
+                        <p class="percent">50%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-per" style="width: 50%"></span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <p>JavaScript (ES6+)</p>
+                        <p class="percent">40%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-per" style="width: 40%"></span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <p>HTML5 & CSS3</p>
+                        <p class="percent">60%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-per" style="width: 60%"></span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <p>Java & C++</p>
+                        <p class="percent">80%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-per" style="width: 80%"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-column">
+                <h3 class="column-title">Professional Skills</h3>
+
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <p>Application Development</p>
+                        <p class="percent">75%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-per" style="width: 75%"></span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <p>Game Dev (PlayCanvas)</p>
+                        <p class="percent">65%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-per" style="width: 65%"></span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <p>Data Science (Pandas , Numpy , Matplotlib)</p>
+                        <p class="percent">60%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-per" style="width: 60%"></span>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <p>Web Development</p>
+                        <p class="percent">50%</p>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-per" style="width: 50%"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="achievements" id="achievements">
+        <h2 class="section-title">Achievements & <span class="text-highlight">Certificates</span></h2>
+
+        <div class="achievements-container">
+            
+	    
+
+
+            <div class="achievement-card">
+                <div class="achievement-img">
+                    <img src="quiz.jpg" alt="Coding Competition Win">
+                </div>
+                <div class="card-content">
+                    <h3>3rd Position - Coding Battle</h3>
+                    <span class="date">Nov 2023</span>
+                    <p>Secured 3rd rank among 110+ participants. Solved complex algorithmic problems in C++ under tight deadlines.</p>
+                </div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-img">
+                    <img src="team lead.jpg" alt="Team Leadership">
+                </div>
+                <div class="card-content">
+                    <h3>Team Lead - Bootcamp</h3>
+                    <span class="date">2023 - 2024</span>
+                    <p>Led a class students team, conducted code reviews, and mentored juniors in C++ & Logic Building.</p>
+                </div>
+            </div>
+
+	   <div class="achievement-card">
+                <div class="achievement-img">
+                    <img src="cgpa.jpg" alt="Coding Competition Win">
+                </div>
+	    
+             <div class="card-content">
+                    <h3>Unofficial Transcript</h3>
+                    <span class="date">2.96 CGPA</span>
+                    <p>This is my cumulative GPA (CGPA) for five semesters</p>
+                </div>
+            </div>
+
+            <div class="achievement-card">
+                    <div class="card-content">
+                    <h3>High Score in STS Test</h3>
+                    <span class="date">Score: 70 Marks</span>
+                    <p>Qualified BPS 5-15 screening test with a competitive score, demonstrating strong analytical skills.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact <span class="text-highlight">Me</span></h2>
+
+        <div class="contact-wrapper">
+            
+            <div class="contact-details">
+                <h3>Let's Talk Business</h3>
+                <p>I'm currently available for freelance work or full-time projects. Send me a message, and let's create something amazing together.</p>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>shazilshaikh8@gmail.com</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0311-3117472</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Sukkur, Pakistan</span>
+                </div>
+            </div>
+
+            <form action="#" class="contact-form-card">
+                <div class="input-group">
+                    <input type="text" required>
+                    <label>Your Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" required>
+                    <label>Email Address</label>
+                </div>
+
+                <div class="input-group">
+                    <textarea rows="4" required></textarea>
+                    <label>Your Message</label>
+                </div>
+
+                <button type="submit" class="btn-send">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2026 by <span class="text-highlight">Shazil Ahmed Shaikh</span> | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#home"><i class="fas fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
