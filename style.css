@@ -1058,7 +1058,7 @@ body {
     justify-content: center;
     align-items: center;
     transition: 0.3s;
-}
+} 
 
 .whatsapp-float:hover {
     transform: scale(1.1);
