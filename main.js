@@ -58,7 +58,6 @@ const animateCounters = () => {
         updateCount();
     });
 };
-
 /* --- Scroll Trigger (Jab user wahan pohanche tab start ho) --- */
 let hasAnimate = false;
 window.addEventListener('scroll', () => {
