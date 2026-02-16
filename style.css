@@ -525,92 +525,125 @@ body {
 .project-card:hover .project-media video {
     filter: brightness(1.1);
 }
-
-/* --- Skills Section --- */
+/* --- Skills Section (Bigger & Centered) --- */
 .skills {
-    padding: 100px 10%;
-    background: var(--bg-color); /* Matches theme background */
+    padding: 80px 0;
+    background: #080808;
+    overflow: hidden;
 }
 
-.skills-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    justify-content: space-between;
+/* Heading Center */
+.section-title {
+    text-align: center; /* Text Center */
+    font-size: 36px;
+    margin-bottom: 60px;
+    color: #fff;
 }
 
-.skills-column {
-    flex: 1 1 45%; /* Both columns take equal width */
-}
-
-.column-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 30px;
-    border-left: 4px solid var(--accent-color); /* Theme color border */
-    padding-left: 10px;
-}
-
-/* Individual Skill Styling */
-.skill-box {
-    margin-bottom: 30px;
-}
-
-.skill-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.skill-info p {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text-color);
-}
-
-.skill-info .percent {
-    color: var(--accent-color);
-    font-weight: 600;
-}
-
-/* Progress Bar Container */
-.skill-bar {
+.marquee-container {
     width: 100%;
-    height: 10px;
-    background: #1f1f1f; /* Dark grey track */
-    border-radius: 10px;
+    overflow: hidden;
+    padding: 30px 0; /* Box shadow kat na jaye is liye padding */
     position: relative;
-    overflow: hidden; /* Round corners maintain karne ke liye */
 }
 
-/* Filled Progress Bar */
-.skill-per {
-    height: 100%;
-    background: var(--accent-color);
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    box-shadow: 0 0 10px var(--accent-color); /* Glow Effect */
-    
-    /* Animation: 0 se start hoke fill hoga */
-    animation: fillBar 2s ease forwards;
-    width: 0; /* JS ya CSS animation se control hoga */
+.marquee-content {
+    display: flex;
+    gap: 40px; /* Gap badhaya taaki saaf dikhe */
+    width: max-content;
+    /* Speed thodi slow ki taaki bade boxes araam se dikhein */
+    animation: scroll 30s linear infinite; 
 }
 
-/* Keyframes for Animation */
-@keyframes fillBar {
-    from { width: 0; }
+.marquee-content:hover {
+    animation-play-state: paused;
 }
 
-/* Responsive: Stack columns on mobile */
-@media (max-width: 768px) {
-    .skills-content {
-        flex-direction: column;
-    }
+/* --- Bigger Square Box Styling --- */
+.skill-box {
+    width: 180px;  /* Size Bada Kiya */
+    height: 180px; /* Size Bada Kiya */
+    background: #111;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #222;
+    transition: 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    flex-shrink: 0;
 }
 
+/* Text Style */
+.skill-box span {
+    margin-top: 20px;
+    font-size: 18px; /* Text bhi thoda bada kiya */
+    font-weight: 600;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+/* Icon Style */
+.skill-box i {
+    font-size: 60px; /* Icon ka size bada kiya */
+    transition: 0.3s;
+}
+
+/* --- Brand Colors (New Added) --- */
+
+/* Java: Orange/Red */
+.java i { color: #f89820; }
+.java:hover { border-color: #f89820; box-shadow: 0 0 25px rgba(248, 152, 32, 0.4); }
+
+/* Godot: Blue */
+.godot i { color: #478cbf; }
+.godot:hover { border-color: #478cbf; box-shadow: 0 0 25px rgba(71, 140, 191, 0.4); }
+
+/* Game Dev: Purple */
+.gamedev i { color: #9b59b6; }
+.gamedev:hover { border-color: #9b59b6; box-shadow: 0 0 25px rgba(155, 89, 182, 0.4); }
+
+/* Python */
+.python i { color: #3776AB; }
+.python:hover { border-color: #3776AB; box-shadow: 0 0 25px rgba(55, 118, 171, 0.4); }
+
+/* JavaScript */
+.js i { color: #F7DF1E; }
+.js:hover { border-color: #F7DF1E; box-shadow: 0 0 25px rgba(247, 223, 30, 0.4); }
+
+/* PlayCanvas */
+.playcanvas i { color: #FF5733; }
+.playcanvas:hover { border-color: #FF5733; box-shadow: 0 0 25px rgba(255, 87, 51, 0.4); }
+
+/* Automation */
+.automation i { color: #00E5FF; }
+.automation:hover { border-color: #00E5FF; box-shadow: 0 0 25px rgba(0, 229, 255, 0.4); }
+
+/* C++ */
+.cpp i { color: #00599C; }
+.cpp:hover { border-color: #00599C; box-shadow: 0 0 25px rgba(0, 89, 156, 0.4); }
+
+/* HTML */
+.html i { color: #E34F26; }
+.html:hover { border-color: #E34F26; box-shadow: 0 0 25px rgba(227, 79, 38, 0.4); }
+
+/* --- Hover General Effects --- */
+.skill-box:hover {
+    transform: translateY(-15px);
+    background: #1a1a1a;
+}
+
+.skill-box:hover span {
+    color: #fff;
+}
+
+/* Animation */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 /* --- Achievements Section --- */
 .achievements {
     padding: 100px 10%;
