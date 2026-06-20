@@ -1,50 +1,143 @@
-// Typing Animation Logic (Can be used if you add class .typing-text anywhere)
+// Typing Animation Logic
+
 const textElement = document.querySelector('.typing-text');
-if(textElement) {
-    const titles = ["Developer", "Python Expert", "3D Architect"];
-    let titleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
 
-    function typeEffect() {
-        const currentTitle = titles[titleIndex];
-        
-        if (isDeleting) {
-            textElement.textContent = currentTitle.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            textElement.textContent = currentTitle.substring(0, charIndex + 1);
-            charIndex++;
-        }
+const titles = ["Developer", "Python Expert", "Game Developer"];
 
-        if (!isDeleting && charIndex === currentTitle.length) {
-            isDeleting = true;
-            setTimeout(typeEffect, 2000);
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            titleIndex = (titleIndex + 1) % titles.length;
-            setTimeout(typeEffect, 500); 
-        } else {
-            setTimeout(typeEffect, isDeleting ? 100 : 200); 
-        }
+let titleIndex = 0;
+
+let charIndex = 0;
+
+let isDeleting = false;
+
+
+
+function typeEffect() {
+
+    const currentTitle = titles[titleIndex];
+
+    
+
+    if (isDeleting) {
+
+        textElement.textContent = currentTitle.substring(0, charIndex - 1);
+
+        charIndex--;
+
+    } else {
+
+        textElement.textContent = currentTitle.substring(0, charIndex + 1);
+
+        charIndex++;
+
     }
-    document.addEventListener('DOMContentLoaded', typeEffect);
+
+
+
+    if (!isDeleting && charIndex === currentTitle.length) {
+
+        isDeleting = true;
+
+        setTimeout(typeEffect, 2000); // Pause at end of word
+
+    } else if (isDeleting && charIndex === 0) {
+
+        isDeleting = false;
+
+        titleIndex = (titleIndex + 1) % titles.length;
+
+        setTimeout(typeEffect, 500); // Pause before typing new word
+
+    } else {
+
+        setTimeout(typeEffect, isDeleting ? 100 : 200); // Typing speed
+
+    }
+
 }
 
-// Menu Toggle for Mobile
-const menuBtn = document.querySelector('.menu-btn');
-const navLinks = document.querySelector('.nav-links');
 
-if(menuBtn) {
-    menuBtn.addEventListener('click', () => {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '100%';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.background = 'rgba(5, 5, 7, 0.95)';
-        navLinks.style.padding = '20px 0';
-        navLinks.style.textAlign = 'center';
+
+// Start the animation when page loads
+
+document.addEventListener('DOMContentLoaded', typeEffect);
+
+
+
+// Optional: Cursor Blink Effect css already added via class
+
+
+
+/* --- Animated Counter Statistics --- */
+
+const counters = document.querySelectorAll('.counter');
+
+const speed = 150; // Jitna kam number, utni tez speed
+
+
+
+const animateCounters = () => {
+
+    counters.forEach(counter => {
+
+        const updateCount = () => {
+
+            const target = +counter.getAttribute('data-target'); // Target number (e.g. 50)
+
+            const count = +counter.innerText.replace('+', ''); // Current number
+
+            
+
+            // Increment calculate karein
+
+            const inc = target / speed;
+
+
+
+            if (count < target) {
+
+                // Jab tak target tak na pohanche, add karte raho
+
+                counter.innerText = Math.ceil(count + inc) + "+";
+
+                setTimeout(updateCount, 20);
+
+            } else {
+
+                // Exact number set kar do
+
+                counter.innerText = target + "+";
+
+            }
+
+        };
+
+        updateCount();
+
     });
-}
+
+};
+
+/* --- Scroll Trigger (Jab user wahan pohanche tab start ho) --- */
+
+let hasAnimate = false;
+
+window.addEventListener('scroll', () => {
+
+    const section = document.querySelector('.stats-section');
+
+    const sectionPos = section.getBoundingClientRect().top;
+
+    const screenPos = window.innerHeight / 1.3;
+
+
+
+    if(sectionPos < screenPos && !hasAnimate) {
+
+        animateCounters();
+
+        hasAnimate = true; // Sirf ek baar chalega
+
+    }
+
+});
