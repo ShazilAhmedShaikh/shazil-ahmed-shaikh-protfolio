@@ -1,188 +1,2131 @@
 /* --- Global Variables & Reset --- */
+
 :root {
-    --bg-color: #050507;       
-    --bg-card: rgba(20, 20, 25, 0.6); 
-    --text-color: #e2e8f0;     
-    --accent-color: #2dd4bf;   
-    --gray-text: #94a3b8;      
-    --border-soft: rgba(255, 255, 255, 0.08);
-    --font-main: 'Space Grotesk', sans-serif;
+
+    --bg-color: #080808;       /* Dark Black Background */
+
+    --text-color: #ffffff;     /* White Text */
+
+    --accent-color: #ff4d4d;   /* The Red Glow/Highlight */
+
+    --gray-text: #a3a3a3;
+
+    --font-main: 'Poppins', sans-serif;
+
 }
+
+
 
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
+
     font-family: var(--font-main);
+
 }
+
+
 
 body {
+
     background-color: var(--bg-color);
+
     color: var(--text-color);
-    overflow-x: hidden;
-    line-height: 1.6;
+
+    overflow-x: hidden; /* Prevent horizontal scroll */
+
 }
+
+
 
 /* --- Navbar Styling --- */
+
 .navbar {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     padding: 20px 10%;
+
     position: fixed;
+
     width: 100%;
+
     top: 0;
-    background: rgba(5, 5, 7, 0.8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-soft);
+
+    background: rgba(8, 8, 8, 0.9); /* Transparent Black */
+
+    backdrop-filter: blur(10px);
+
     z-index: 1000;
+
 }
 
-.logo { font-size: 22px; font-weight: 700; letter-spacing: 1px; }
-.logo .dot { color: var(--accent-color); }
-.nav-links { list-style: none; display: flex; }
-.nav-links li { margin: 0 20px; }
-.nav-links a { text-decoration: none; color: var(--gray-text); font-size: 15px; font-weight: 500; transition: 0.3s; }
-.nav-links a:hover, .nav-links a.active { color: var(--text-color); }
-.menu-btn { display: none; font-size: 24px; cursor: pointer; color: var(--text-color); }
+
+
+.logo {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+
+.logo .dot {
+
+    color: var(--accent-color);
+
+    font-size: 30px;
+
+}
+
+
+
+.nav-links {
+
+    list-style: none;
+
+    display: flex;
+
+}
+
+
+
+.nav-links li {
+
+    margin: 0 20px;
+
+}
+
+
+
+.nav-links a {
+
+    text-decoration: none;
+
+    color: var(--text-color);
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    transition: 0.3s;
+
+}
+
+
+
+.nav-links a:hover, .nav-links a.active {
+
+    color: var(--accent-color);
+
+}
+
+
+
+.menu-btn {
+
+    display: none; /* Mobile ke liye baad main visible karenge */
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+}
+
+
 
 /* --- Hero Section Styling --- */
+
 .hero {
-    display: flex; justify-content: center; align-items: center;
-    min-height: 100vh; padding: 120px 10% 0; gap: 80px;
-}
-.hero-profile-container { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.hero-image { position: relative; width: 220px; height: 220px; margin-bottom: 25px; }
-.glow-circle {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 240px; height: 240px; background: var(--accent-color);
-    border-radius: 50%; filter: blur(45px); opacity: 0.2; z-index: 0;
-}
-.hero-image img {
-    position: relative; width: 100%; height: 100%; object-fit: cover;
-    border-radius: 50%; border: 2px solid rgba(45, 212, 191, 0.3); z-index: 1;
-}
-.profile-info h2 { font-size: 20px; font-weight: 600; letter-spacing: 1.5px; margin-bottom: 5px; }
-.profile-info p { font-size: 12px; color: var(--gray-text); letter-spacing: 1px; }
 
-.hero-content { flex: 1; max-width: 650px; }
-.status-badge {
-    display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px;
-    background: rgba(45, 212, 191, 0.05); border: 1px solid rgba(45, 212, 191, 0.2);
-    border-radius: 30px; color: var(--accent-color); font-size: 13px; margin-bottom: 25px;
+    display: flex;
+
+    justify-content: center; /* Center align items */
+
+    align-items: center;
+
+    min-height: 100vh;
+
+    padding: 0 10%;
+
+    gap: 50px; /* Space between text and image */
+
 }
-.ping-dot {
-    width: 8px; height: 8px; background: var(--accent-color);
-    border-radius: 50%; box-shadow: 0 0 10px var(--accent-color); animation: blink 1.5s infinite alternate;
+
+
+
+/* Text Content Side */
+
+.hero-content {
+
+    flex: 1;
+
+    max-width: 600px;
+
 }
-@keyframes blink { from { opacity: 0.4; } to { opacity: 1; } }
 
-.hero-content h1 { font-size: 52px; font-weight: 700; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px; }
-.text-highlight { background: linear-gradient(90deg, #e2e8f0, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-content p { font-size: 16px; color: var(--gray-text); margin-bottom: 35px; }
 
-.hero-btns { display: flex; gap: 15px; margin-bottom: 40px; }
-.btn-primary, .btn-outline { padding: 12px 30px; border-radius: 30px; font-size: 15px; font-weight: 500; text-decoration: none; transition: 0.3s ease; }
-.btn-primary { background: var(--text-color); color: var(--bg-color); }
-.btn-primary:hover { background: var(--gray-text); }
-.btn-outline { border: 1px solid var(--border-soft); color: var(--text-color); }
-.btn-outline:hover { border-color: var(--accent-color); box-shadow: 0 0 20px rgba(45, 212, 191, 0.15); }
 
-.social-icons { display: flex; gap: 15px; }
+.hero-content h3 {
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+}
+
+
+
+.hero-content h1 {
+
+    font-size: 56px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    margin: 10px 0 20px;
+
+}
+
+
+
+.text-highlight {
+
+    color: var(--accent-color);
+
+}
+
+
+
+/* Dynamic Text Effect Styling */
+
+.typing-text {
+
+    color: var(--accent-color);
+
+    border-right: 2px solid var(--accent-color); /* Cursor effect */
+
+    padding-right: 5px;
+
+    animation: blink 0.7s infinite;
+
+}
+
+
+
+.hero-content p {
+
+    font-size: 16px;
+
+    color: var(--gray-text);
+
+    margin-bottom: 30px;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* Social Icons */
+
+.social-icons {
+
+    display: flex;
+
+    margin-bottom: 40px;
+
+}
+
+
+
 .social-icons a {
-    width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;
-    border-radius: 50%; border: 1px solid var(--border-soft); color: var(--gray-text); transition: 0.3s;
-}
-.social-icons a:hover { border-color: var(--accent-color); color: var(--accent-color); box-shadow: 0 0 15px rgba(45, 212, 191, 0.2); }
 
-/* --- Section Global --- */
-.section-title { text-align: center; font-size: 36px; margin-bottom: 60px; padding-top: 80px;}
+    display: inline-flex;
 
-/* --- Services & Projects Cards --- */
-.services, .projects, .achievements { padding: 50px 10%; }
-.services-container, .projects-container, .achievements-container {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
-}
-.service-box, .project-card, .achievement-card {
-    background: var(--bg-card); border: 1px solid var(--border-soft);
-    border-radius: 20px; overflow: hidden; transition: 0.4s ease; backdrop-filter: blur(10px);
-}
-.service-box { padding: 40px 30px; text-align: center; }
-.service-icon { font-size: 50px; color: var(--accent-color); margin-bottom: 20px; }
-.project-card:hover, .service-box:hover, .achievement-card:hover {
-    transform: translateY(-5px); border-color: rgba(45, 212, 191, 0.3); box-shadow: 0 10px 30px rgba(45, 212, 191, 0.05);
+    justify-content: center;
+
+    align-items: center;
+
+    width: 45px;
+
+    height: 45px;
+
+    background: transparent;
+
+    border: 2px solid var(--accent-color);
+
+    border-radius: 50%;
+
+    color: var(--accent-color);
+
+    font-size: 20px;
+
+    text-decoration: none;
+
+    margin-right: 15px;
+
+    transition: 0.4s ease;
+
 }
 
-.project-media, .achievement-img { width: 100%; height: 200px; background: #000; overflow: hidden; }
-.project-media video, .achievement-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.4s; }
-.project-card:hover .project-media video, .achievement-card:hover .achievement-img img { opacity: 1; transform: scale(1.05); }
 
-.project-content, .card-content { padding: 25px; }
-.tech-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-.tech-stack span { font-size: 12px; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 12px; color: var(--gray-text); }
-.project-links { display: flex; gap: 10px; }
-.btn-card-outline, .btn-card-fill { padding: 6px 16px; font-size: 13px; border-radius: 20px; text-decoration: none; transition: 0.3s; }
-.btn-card-outline { border: 1px solid var(--border-soft); color: var(--text-color); }
-.btn-card-outline:hover { border-color: var(--accent-color); color: var(--accent-color); }
-.btn-card-fill { background: rgba(255,255,255,0.1); color: var(--text-color); }
-.btn-card-fill:hover { background: var(--text-color); color: var(--bg-color); }
 
-/* --- Skills Marquee --- */
-.skills { padding: 80px 0; overflow: hidden; }
-.marquee-container { width: 100%; overflow: hidden; position: relative; padding: 20px 0; }
-.marquee-content { display: flex; gap: 30px; width: max-content; animation: scroll 20s linear infinite; }
-.marquee-content:hover { animation-play-state: paused; }
-.skill-box {
-    width: 150px; height: 150px; background: var(--bg-card); border: 1px solid var(--border-soft);
-    border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-    transition: 0.4s; flex-shrink: 0;
-}
-.skill-box i { font-size: 50px; margin-bottom: 15px; }
-.skill-box span { font-size: 16px; color: var(--text-color); font-weight: 500;}
-.skill-box:hover { transform: translateY(-10px); border-color: var(--accent-color); }
-@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.social-icons a:hover {
 
-/* --- Contact Section --- */
-.contact { padding: 80px 10%; }
-.contact-wrapper { display: flex; gap: 60px; flex-wrap: wrap; justify-content: center; }
-.contact-details { flex: 1; min-width: 300px; }
-.contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; color: var(--gray-text); }
-.contact-item i {
-    width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%;
-    display: flex; justify-content: center; align-items: center; color: var(--accent-color);
-}
-.contact-form-card { flex: 1; min-width: 300px; background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--border-soft); }
-.input-group { position: relative; margin-bottom: 30px; }
-.input-group input, .input-group textarea {
-    width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid var(--border-soft);
-    color: var(--text-color); font-size: 16px; outline: none; transition: 0.3s;
-}
-.input-group label { position: absolute; top: 10px; left: 0; color: var(--gray-text); pointer-events: none; transition: 0.3s; }
-.input-group input:focus ~ label, .input-group input:valid ~ label, .input-group textarea:focus ~ label, .input-group textarea:valid ~ label {
-    top: -20px; font-size: 12px; color: var(--accent-color);
-}
-.input-group input:focus, .input-group textarea:focus { border-bottom-color: var(--accent-color); }
-.btn-send { width: 100%; padding: 15px; background: var(--accent-color); color: var(--bg-color); border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; }
-.btn-send:hover { background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); }
+    background: var(--accent-color);
 
-/* --- Footer & WhatsApp --- */
-.footer { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; border-top: 1px solid var(--border-soft); background: #020203; }
-.footer-text p { color: var(--gray-text); font-size: 14px; }
-.footer-iconTop a { padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; color: var(--accent-color); text-decoration: none; transition: 0.3s; }
-.footer-iconTop a:hover { background: var(--accent-color); color: var(--bg-color); }
+    color: var(--bg-color);
 
-.whatsapp-float {
-    position: fixed; bottom: 30px; right: 30px; background-color: #1a1a24; color: var(--accent-color);
-    border: 1px solid rgba(45, 212, 191, 0.3); width: 55px; height: 55px; border-radius: 50%;
-    display: flex; justify-content: center; align-items: center; font-size: 28px; box-shadow: 0 0 20px rgba(45, 212, 191, 0.15); z-index: 1000; transition: 0.3s;
+    box-shadow: 0 0 15px var(--accent-color);
+
 }
-.whatsapp-float:hover { background-color: var(--accent-color); color: var(--bg-color); transform: scale(1.1); }
+
+
+
+/* Hire Me Button */
+
+.btn-hire {
+
+    display: inline-block;
+
+    padding: 12px 35px;
+
+    background: transparent;
+
+    border: 2px solid var(--accent-color);
+
+    border-radius: 30px;
+
+    color: var(--text-color);
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.4s ease;
+
+}
+
+
+
+/* --- Hero Buttons Wrapper --- */
+
+.hero-btns {
+
+    display: flex;
+
+    gap: 20px; /* Buttons ke darmiyan 20px ka faasla */
+
+    margin-top: 30px; /* Text se thoda neeche */
+
+}
+
+
 
 /* --- Mobile Responsiveness --- */
+
+@media (max-width: 768px) {
+
+    .hero-btns {
+
+        justify-content: center; /* Mobile pe center ho jayein */
+
+    }
+
+}
+
+
+
+/* Update .btn-hire in style.css */
+
+.btn-hire {
+
+    display: inline-flex; /* Text aur Icon center karne ke liye */
+
+    align-items: center;
+
+    gap: 10px; /* Text aur Download icon ke beech gap */
+
+    padding: 12px 35px;
+
+    background: transparent;
+
+    border: 2px solid var(--accent-color);
+
+    border-radius: 30px;
+
+    color: var(--text-color);
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.4s ease;
+
+}
+
+
+
+/* Dono buttons hover pe Red ho jayenge */
+
+.btn-hire:hover {
+
+    background: var(--accent-color);
+
+    color: #fff;
+
+    box-shadow: 0 0 20px var(--accent-color);
+
+    transform: translateY(-3px); /* Thoda sa upar uthega click karne jaisa feel */
+
+}
+
+}
+
+
+
+/* Image Side (The Glow Effect) */
+
+/* Image Wrapper */
+
+.hero-image {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center; 
+
+    position: relative;
+
+    z-index: 1; /* Image ko glow ke upar rakhne ke liye */
+
+}
+
+
+
+/* Glow Effect - Ab ye image ke colors ko kharab nahi karega */
+
+.glow-circle {
+
+    position: absolute;
+
+    width: 300px;
+
+    height: 300px;
+
+    background: var(--accent-color); /* Theme color uthayega */
+
+    border-radius: 50%;
+
+    filter: blur(120px); /* Bohot soft light effect */
+
+    opacity: 0.15; /* Halka sa glow, taaki image clear dikhe */
+
+    z-index: -1;   /* Image ke peeche */
+
+}
+
+
+
+/* Image Styling - Bilkul Original Color */
+
+.hero-image img {
+
+    width: 280px;  /* Size control */
+
+    height: 280px;
+
+    object-fit: cover; /* Image stretch nahi hogi */
+
+    border-radius: 50%; 
+
+    
+
+    /* Koi border ya filter nahi, taaki colors "Pop" karein */
+
+    box-shadow: none; 
+
+    transition: transform 0.3s ease;
+
+}
+
+
+
+.hero-image img:hover {
+
+    transform: scale(1.05); /* Sirf halka sa zoom */
+
+}
+
+/* Main Profile Image */
+
+.hero-image img {
+
+    width: 100%;
+
+    max-width: 320px; /* Height/Width control yahan se hogi (pehle 450px tha) */
+
+    height: auto;
+
+    border-radius: 50%; 
+
+    object-fit: cover;
+
+    /* filter: grayscale(100%); <-- Ye line hata di hai taaki color full rahe */
+
+    border: 3px solid rgba(255, 77, 77, 0.3); /* Slight border matching theme */
+
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+    transition: 0.5s ease;
+
+}
+
+
+
+/* Hover Effect - Thoda sa zoom aur glow */
+
+.hero-image img:hover {
+
+    transform: scale(1.05); /* Slight zoom */
+
+    border-color: var(--accent-color);
+
+    box-shadow: 0 0 30px rgba(255, 77, 77, 0.4);
+
+}
+
+
+
+/* --- Responsive Design (Mobile) --- */
+
 @media (max-width: 992px) {
-    .hero { flex-direction: column; padding-top: 150px; text-align: center; gap: 40px; }
-    .hero-content h1 { font-size: 40px; }
-    .hero-btns { justify-content: center; }
-    .social-icons { justify-content: center; }
-    .nav-links { display: none; }
+
+    .hero {
+
+        flex-direction: column-reverse; /* Mobile pe image upar, text neeche */
+
+        text-align: center;
+
+        padding-top: 100px;
+
+    }
+
+
+
+    .hero-content h1 {
+
+        font-size: 40px;
+
+    }
+
+    
+
+    .social-icons {
+
+        justify-content: center;
+
+    }
+
+    
+
+    .navbar {
+
+        padding: 20px 5%;
+
+    }
+
+    
+
+    .nav-links {
+
+        display: none; /* Simple mobile menu implementation required via JS */
+
+    }
+
+}
+
+
+
+
+
+/* --- Services Section --- */
+
+.services {
+
+    padding: 100px 10%;
+
+    background: var(--bg-color); /* Same black background */
+
+    text-align: center;
+
+}
+
+
+
+.section-title {
+
+    font-size: 40px;
+
+    font-weight: 700;
+
+    margin-bottom: 60px;
+
+    color: var(--text-color);
+
+}
+
+
+
+.services-container {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+
+    gap: 30px;
+
+}
+
+
+
+/* Service Card Styling */
+
+.service-box {
+
+    background: #111111; /* Slightly lighter than pure black */
+
+    padding: 40px 30px;
+
+    border-radius: 20px;
+
+    border: 1px solid #222; /* Subtle border */
+
+    text-align: center;
+
+    transition: 0.4s ease;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+
+/* Hover Effect: Card Upar Uthega aur Border Glow karega */
+
+.service-box:hover {
+
+    transform: translateY(-10px);
+
+    border-color: var(--accent-color);
+
+    box-shadow: 0 0 20px rgba(255, 87, 51, 0.2); /* Soft glow using your theme color */
+
+}
+
+
+
+/* Icon Styling */
+
+.service-icon {
+
+    font-size: 50px;
+
+    color: var(--accent-color);
+
+    margin-bottom: 20px;
+
+    transition: 0.4s;
+
+}
+
+
+
+.service-box:hover .service-icon {
+
+    transform: scale(1.1); /* Icon thoda bada hoga hover pe */
+
+    text-shadow: 0 0 10px var(--accent-color);
+
+}
+
+
+
+/* Text Styling */
+
+.service-box h3 {
+
+    font-size: 24px;
+
+    margin-bottom: 15px;
+
+    font-weight: 600;
+
+}
+
+
+
+.service-box p {
+
+    font-size: 15px;
+
+    color: var(--gray-text);
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+/* Read More Button (Chota sa) */
+
+.btn-read {
+
+    display: inline-block;
+
+    padding: 10px 25px;
+
+    border-radius: 25px;
+
+    background: transparent;
+
+    border: 2px solid var(--accent-color);
+
+    color: var(--accent-color);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+
+}
+
+
+
+.service-box:hover .btn-read {
+
+    background: var(--accent-color);
+
+    color: #fff;
+
+}
+
+
+
+/* --- Projects Section --- */
+
+.projects {
+
+    padding: 100px 10%;
+
+    background: #050505; /* Slightly darker than services bg */
+
+}
+
+
+
+.projects-container {
+
+    display: grid;
+
+    /* Responsive Grid: 1 col mobile, 2 col tablet, 3 col desktop */
+
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+
+    gap: 40px;
+
+}
+
+
+
+/* Project Card Base */
+
+.project-card {
+
+    background: #111;
+
+    border-radius: 20px;
+
+    overflow: hidden; /* Image corners round karne ke liye */
+
+    border: 1px solid #222;
+
+    transition: 0.4s ease;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+}
+
+
+
+.project-card:hover {
+
+    transform: translateY(-10px); /* Upar uthega */
+
+    border-color: var(--accent-color); /* Red Border on Hover */
+
+    box-shadow: 0 10px 30px rgba(255, 87, 51, 0.15); /* Soft Glow */
+
+}
+
+
+
+/* Image Styling */
+
+.project-img {
+
+    width: 100%;
+
+    height: 200px; /* Fixed height for consistency */
+
+    overflow: hidden;
+
+}
+
+
+
+.project-img img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover; /* Image stretch nahi hogi */
+
+    transition: 0.5s ease;
+
+}
+
+
+
+.project-card:hover .project-img img {
+
+    transform: scale(1.1); /* Image zoom on hover */
+
+}
+
+
+
+/* Content Area */
+
+.project-content {
+
+    padding: 25px;
+
+}
+
+
+
+.project-content h3 {
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+
+}
+
+
+
+.project-content p {
+
+    font-size: 14px;
+
+    color: var(--gray-text);
+
+    margin-bottom: 20px;
+
+    line-height: 1.5;
+
+}
+
+
+
+/* Tech Stack Tags */
+
+.tech-stack {
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+
+.tech-stack span {
+
+    font-size: 12px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    padding: 5px 12px;
+
+    border-radius: 15px;
+
+    color: #ddd;
+
+}
+
+
+
+/* Action Buttons */
+
+.project-links {
+
+    display: flex;
+
+    gap: 15px;
+
+}
+
+
+
+.btn-outline, .btn-fill {
+
+    padding: 8px 20px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+
+}
+
+
+
+/* Outline Button (Github) */
+
+.btn-outline {
+
+    border: 2px solid var(--accent-color);
+
+    color: var(--text-color);
+
+}
+
+
+
+.btn-outline:hover {
+
+    background: var(--accent-color);
+
+    color: #fff;
+
+}
+
+
+
+/* Fill Button (Demo) */
+
+.btn-fill {
+
+    background: var(--accent-color);
+
+    color: #fff;
+
+    border: 2px solid var(--accent-color);
+
+}
+
+
+
+.btn-fill:hover {
+
+    background: transparent;
+
+    color: var(--text-color);
+
+}
+
+
+
+/* Project Card Media (Video Container) */
+
+.project-media {
+
+    width: 100%;
+
+    height: 220px; /* Thoda height badhaya taaki video clear dikhe */
+
+    overflow: hidden;
+
+    position: relative;
+
+    background: #000; /* Video load hone se pehle black dikhe */
+
+}
+
+
+
+/* Video Styling */
+
+.project-media video {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover; /* Video poore box ko cover karegi, black bars nahi ayenge */
+
+    transition: transform 0.5s ease;
+
+    opacity: 0.8; /* Default mein thoda dark rakha taaki text focus mein rahe */
+
+}
+
+
+
+/* Hover Effect */
+
+.project-card:hover .project-media video {
+
+    transform: scale(1.05); /* Slight Zoom */
+
+    opacity: 1; /* Hover pe video full bright ho jayegi */
+
+}
+
+
+
+.project-media video {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: all 0.5s ease; /* Smooth transition */
+
+    
+
+    /* Optional: Agar aap chahte hain ke video play hone par thodi highlight ho */
+
+    filter: brightness(0.8); 
+
+}
+
+
+
+/* Hover par video full bright ho jaye */
+
+.project-card:hover .project-media video {
+
+    filter: brightness(1.1);
+
+}
+
+/* --- Skills Section (Bigger & Centered) --- */
+
+.skills {
+
+    padding: 80px 0;
+
+    background: #080808;
+
+    overflow: hidden;
+
+}
+
+
+
+/* Heading Center */
+
+.section-title {
+
+    text-align: center; /* Text Center */
+
+    font-size: 36px;
+
+    margin-bottom: 60px;
+
+    color: #fff;
+
+}
+
+
+
+.marquee-container {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    padding: 30px 0; /* Box shadow kat na jaye is liye padding */
+
+    position: relative;
+
+}
+
+
+
+.marquee-content {
+
+    display: flex;
+
+    gap: 40px; /* Gap badhaya taaki saaf dikhe */
+
+    width: max-content;
+
+    /* Speed thodi slow ki taaki bade boxes araam se dikhein */
+
+    animation: scroll 30s linear infinite; 
+
+}
+
+
+
+.marquee-content:hover {
+
+    animation-play-state: paused;
+
+}
+
+
+
+/* --- Bigger Square Box Styling --- */
+
+.skill-box {
+
+    width: 180px;  /* Size Bada Kiya */
+
+    height: 180px; /* Size Bada Kiya */
+
+    background: #111;
+
+    border-radius: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border: 1px solid #222;
+
+    transition: 0.4s ease;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+
+    flex-shrink: 0;
+
+}
+
+
+
+/* Text Style */
+
+.skill-box span {
+
+    margin-top: 20px;
+
+    font-size: 18px; /* Text bhi thoda bada kiya */
+
+    font-weight: 600;
+
+    color: #ccc;
+
+    transition: 0.3s;
+
+}
+
+
+
+/* Icon Style */
+
+.skill-box i {
+
+    font-size: 60px; /* Icon ka size bada kiya */
+
+    transition: 0.3s;
+
+}
+
+
+
+/* --- Brand Colors (New Added) --- */
+
+
+
+/* Java: Orange/Red */
+
+.java i { color: #f89820; }
+
+.java:hover { border-color: #f89820; box-shadow: 0 0 25px rgba(248, 152, 32, 0.4); }
+
+
+
+/* Godot: Blue */
+
+.godot i { color: #478cbf; }
+
+.godot:hover { border-color: #478cbf; box-shadow: 0 0 25px rgba(71, 140, 191, 0.4); }
+
+
+
+/* Game Dev: Purple */
+
+.gamedev i { color: #9b59b6; }
+
+.gamedev:hover { border-color: #9b59b6; box-shadow: 0 0 25px rgba(155, 89, 182, 0.4); }
+
+
+
+/* Python */
+
+.python i { color: #3776AB; }
+
+.python:hover { border-color: #3776AB; box-shadow: 0 0 25px rgba(55, 118, 171, 0.4); }
+
+
+
+/* JavaScript */
+
+.js i { color: #F7DF1E; }
+
+.js:hover { border-color: #F7DF1E; box-shadow: 0 0 25px rgba(247, 223, 30, 0.4); }
+
+
+
+/* PlayCanvas */
+
+.playcanvas i { color: #FF5733; }
+
+.playcanvas:hover { border-color: #FF5733; box-shadow: 0 0 25px rgba(255, 87, 51, 0.4); }
+
+
+
+/* Automation */
+
+.automation i { color: #00E5FF; }
+
+.automation:hover { border-color: #00E5FF; box-shadow: 0 0 25px rgba(0, 229, 255, 0.4); }
+
+
+
+/* C++ */
+
+.cpp i { color: #00599C; }
+
+.cpp:hover { border-color: #00599C; box-shadow: 0 0 25px rgba(0, 89, 156, 0.4); }
+
+
+
+/* HTML */
+
+.html i { color: #E34F26; }
+
+.html:hover { border-color: #E34F26; box-shadow: 0 0 25px rgba(227, 79, 38, 0.4); }
+
+
+
+/* --- Hover General Effects --- */
+
+.skill-box:hover {
+
+    transform: translateY(-15px);
+
+    background: #1a1a1a;
+
+}
+
+
+
+.skill-box:hover span {
+
+    color: #fff;
+
+}
+
+
+
+/* Animation */
+
+@keyframes scroll {
+
+    0% { transform: translateX(0); }
+
+    100% { transform: translateX(-50%); }
+
+}
+
+/* --- Achievements Section --- */
+
+.achievements {
+
+    padding: 100px 10%;
+
+    background: #080808; /* Dark Background */
+
+}
+
+
+
+.achievements-container {
+
+    display: grid;
+
+    /* Responsive Grid: Cards will adjust automatically */
+
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+
+    gap: 30px;
+
+}
+
+
+
+/* Card Styling */
+
+.achievement-card {
+
+    background: #111;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: flex-start; /* Icon aur text top aligned */
+
+    gap: 20px;
+
+    border: 1px solid #222;
+
+    transition: 0.4s ease;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+
+/* Hover Effect */
+
+.achievement-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: var(--accent-color);
+
+    box-shadow: 0 5px 20px rgba(255, 87, 51, 0.1); /* Soft theme glow */
+
+}
+
+
+
+/* Left Accent Line (Stylish Touch) */
+
+.achievement-card::before {
+
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    height: 100%;
+
+    width: 4px;
+
+    background: var(--accent-color);
+
+    opacity: 0.5;
+
+    transition: 0.3s;
+
+}
+
+
+
+.achievement-card:hover::before {
+
+    opacity: 1; /* Full Brightness on Hover */
+
+    width: 6px; /* Thoda thick ho jayega */
+
+}
+
+
+
+/* Icon Styling */
+
+.card-icon {
+
+    font-size: 30px;
+
+    color: var(--accent-color);
+
+    background: rgba(255, 87, 51, 0.1); /* Halka background icon ke peeche */
+
+    padding: 15px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-width: 60px; /* Fixed width taaki shape kharab na ho */
+
+    height: 60px;
+
+}
+
+
+
+/* Text Content */
+
+.card-content h3 {
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+
+    color: #fff;
+
+}
+
+
+
+.card-content .date {
+
+    font-size: 13px;
+
+    color: var(--accent-color);
+
+    font-weight: 500;
+
+    display: block;
+
+    margin-bottom: 10px;
+
+}
+
+
+
+.card-content p {
+
+    font-size: 14px;
+
+    color: var(--gray-text);
+
+    line-height: 1.6;
+
+}
+
+
+
+/* Mobile Responsiveness */
+
+@media (max-width: 768px) {
+
+    .achievement-card {
+
+        flex-direction: column; /* Mobile pe icon upar, text neeche */
+
+        align-items: center;
+
+        text-align: center;
+
+    }
+
+    
+
+    .achievement-card::before {
+
+        width: 100%; /* Top border ban jayega mobile pe */
+
+        height: 4px;
+
+        top: 0;
+
+        left: 0;
+
+    }
+
+}
+
+
+
+/* --- Achievements Section (With Images) --- */
+
+.achievements {
+
+    padding: 100px 10%;
+
+    background: #080808;
+
+}
+
+
+
+.achievements-container {
+
+    display: grid;
+
+    /* Responsive Layout */
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+
+    gap: 30px;
+
+}
+
+
+
+/* Card Base Styling */
+
+.achievement-card {
+
+    background: #111;
+
+    border-radius: 15px;
+
+    overflow: hidden; /* Image corners round rakhne ke liye */
+
+    border: 1px solid #222;
+
+    transition: 0.4s ease;
+
+    display: flex;
+
+    flex-direction: column; /* Image upar, text neeche */
+
+}
+
+
+
+/* Hover Effect */
+
+.achievement-card:hover {
+
+    transform: translateY(-10px); /* Card upar uthega */
+
+    border-color: var(--accent-color);
+
+    box-shadow: 0 10px 30px rgba(255, 87, 51, 0.15);
+
+}
+
+
+
+/* Image Container */
+
+.achievement-img {
+
+    width: 100%;
+
+    height: 200px; /* Fixed height taaki sab barabar dikhein */
+
+    overflow: hidden;
+
+    border-bottom: 1px solid #222;
+
+}
+
+
+
+.achievement-img img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover; /* Image stretch nahi hogi, crop hokar fit hogi */
+
+    transition: transform 0.5s ease;
+
+}
+
+
+
+/* Hover pe Image Zoom Hogi */
+
+.achievement-card:hover .achievement-img img {
+
+    transform: scale(1.1);
+
+}
+
+
+
+/* Text Content Area */
+
+.card-content {
+
+    padding: 25px;
+
+}
+
+
+
+.card-content h3 {
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+    color: #fff;
+
+}
+
+
+
+.card-content .date {
+
+    font-size: 13px;
+
+    color: var(--accent-color); /* Theme color text */
+
+    font-weight: 600;
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+
+
+.card-content p {
+
+    font-size: 14px;
+
+    color: var(--gray-text);
+
+    line-height: 1.6;
+
+}
+
+
+
+/* --- Improved Contact Section --- */
+
+.contact {
+
+    padding: 100px 10%;
+
+    background: #050505;
+
+}
+
+
+
+.contact-wrapper {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 60px;
+
+    flex-wrap: wrap; /* Mobile friendly */
+
+}
+
+
+
+/* Left Side Styling */
+
+.contact-details {
+
+    flex: 1;
+
+    max-width: 500px;
+
+}
+
+
+
+.contact-details h3 {
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+
+    color: #fff;
+
+}
+
+
+
+.contact-details p {
+
+    font-size: 16px;
+
+    color: var(--gray-text);
+
+    margin-bottom: 30px;
+
+    line-height: 1.6;
+
+}
+
+
+
+.contact-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.contact-item i {
+
+    font-size: 20px;
+
+    color: var(--accent-color);
+
+    width: 40px;
+
+    height: 40px;
+
+    background: rgba(255, 255, 255, 0.05); /* Very subtle bg */
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: 0.3s;
+
+}
+
+
+
+.contact-item:hover i {
+
+    background: var(--accent-color);
+
+    color: #fff;
+
+    box-shadow: 0 0 10px var(--accent-color);
+
+}
+
+
+
+.contact-item span {
+
+    color: #ddd;
+
+    font-size: 16px;
+
+}
+
+
+
+/* Right Side: Floating Label Form */
+
+.contact-form-card {
+
+    flex: 1;
+
+    max-width: 500px;
+
+    background: #111; /* Card Background */
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    border: 1px solid #222;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+}
+
+
+
+/* Input Group Container */
+
+.input-group {
+
+    position: relative;
+
+    margin-bottom: 30px;
+
+}
+
+
+
+/* Styles for Input & Textarea */
+
+.input-group input, 
+
+.input-group textarea {
+
+    width: 100%;
+
+    padding: 10px 0;
+
+    font-size: 16px;
+
+    color: #fff;
+
+    border: none;
+
+    border-bottom: 2px solid #444; /* Sirf neeche line */
+
+    background: transparent;
+
+    outline: none;
+
+    transition: 0.3s;
+
+}
+
+
+
+/* The Label (Name, Email etc) */
+
+.input-group label {
+
+    position: absolute;
+
+    top: 10px;
+
+    left: 0;
+
+    color: var(--gray-text);
+
+    pointer-events: none; /* Mouse click label ke through input pe jaye */
+
+    transition: 0.3s ease;
+
+}
+
+
+
+/* Jab Input par click ho ya usme text ho -> Label upar jaye */
+
+.input-group input:focus ~ label,
+
+.input-group input:valid ~ label,
+
+.input-group textarea:focus ~ label,
+
+.input-group textarea:valid ~ label {
+
+    top: -20px;
+
+    font-size: 12px;
+
+    color: var(--accent-color);
+
+}
+
+
+
+/* Jab Input par focus ho -> Line color change ho */
+
+.input-group input:focus,
+
+.input-group textarea:focus {
+
+    border-bottom: 2px solid var(--accent-color);
+
+}
+
+
+
+/* Submit Button */
+
+.btn-send {
+
+    width: 100%;
+
+    padding: 15px;
+
+    background: var(--accent-color);
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+
+.btn-send:hover {
+
+    background: transparent;
+
+    border: 2px solid var(--accent-color);
+
+    color: var(--accent-color);
+
+}
+
+
+
+.btn-send i {
+
+    margin-left: 10px;
+
+}
+
+
+
+/* Mobile Styling */
+
+@media (max-width: 768px) {
+
+    .contact-wrapper {
+
+        flex-direction: column; /* Mobile pe ek ke neeche ek */
+
+        gap: 40px;
+
+    }
+
+    
+
+    .contact-form-card {
+
+        width: 100%; /* Mobile pe full width */
+
+        padding: 25px;
+
+    }
+
+}
+
+/* --- Footer Section --- */
+
+.footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap; /* Mobile pe content wrap ho jaye */
+
+    padding: 20px 10%;
+
+    background: #000; /* Pitch black to separate from contact section */
+
+    border-top: 1px solid #222; /* Halka sa border separation ke liye */
+
+}
+
+
+
+/* Footer Text */
+
+.footer-text p {
+
+    font-size: 14px;
+
+    color: var(--gray-text);
+
+}
+
+
+
+.footer-text span {
+
+    color: var(--accent-color);
+
+    font-weight: 600;
+
+}
+
+
+
+/* Scroll Top Icon */
+
+.footer-iconTop a {
+
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 10px;
+
+    background: var(--accent-color);
+
+    border-radius: 8px;
+
+    transition: 0.5s ease;
+
+    text-decoration: none;
+
+}
+
+
+
+.footer-iconTop a i {
+
+    font-size: 18px;
+
+    color: #fff; /* White Arrow */
+
+    transition: 0.3s;
+
+}
+
+
+
+/* Hover Effect on Arrow */
+
+.footer-iconTop a:hover {
+
+    box-shadow: 0 0 15px var(--accent-color); /* Glow */
+
+    transform: translateY(-5px); /* Thoda upar uthega */
+
+}
+
+
+
+/* Mobile Responsiveness */
+
+@media (max-width: 768px) {
+
+    .footer {
+
+        flex-direction: column-reverse; /* Mobile pe arrow upar, text neeche */
+
+        gap: 20px;
+
+        text-align: center;
+
+        padding-bottom: 30px; /* Thodi jagah neeche */
+
+    }
+
+}
+
+
+
+.whatsapp-float {
+
+    position: fixed;
+
+    bottom: 40px;
+
+    right: 40px;
+
+    background-color: #25d366;
+
+    color: white;
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 50%;
+
+    text-align: center;
+
+    font-size: 35px;
+
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: 0.3s;
+
+} 
+
+
+
+.whatsapp-float:hover {
+
+    transform: scale(1.1);
+
+    background-color: #1ebe57;
+
 }
