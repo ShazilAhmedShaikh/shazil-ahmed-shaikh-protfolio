@@ -141,3 +141,54 @@ window.addEventListener('scroll', () => {
     }
 
 });
+
+/* --- Particle System Configuration --- */
+if (typeof particlesJS !== 'undefined') {
+    particlesJS('particles-js', {
+        "particles": {
+            "number": { 
+                "value": 70, /* Screen par particles ki taadad */
+                "density": { "enable": true, "value_area": 800 } 
+            },
+            "color": { "value": "#2dd4bf" }, /* Aapka Aesthetic Teal Color */
+            "shape": { "type": "circle" },
+            "opacity": { 
+                "value": 0.5, 
+                "random": false 
+            },
+            "size": { 
+                "value": 3, 
+                "random": true 
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#2dd4bf",
+                "opacity": 0.3,
+                "width": 1
+            },
+            "move": { 
+                "enable": true, 
+                "speed": 2, 
+                "direction": "none", 
+                "random": false, 
+                "straight": false, 
+                "out_mode": "out", 
+                "bounce": false 
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": { "enable": true, "mode": "grab" }, /* Mouse ko track karega */
+                "onclick": { "enable": true, "mode": "push" }, /* Click karne par aur particles aayenge */
+                "resize": true
+            },
+            "modes": {
+                "grab": { "distance": 180, "line_linked": { "opacity": 0.8 } },
+                "push": { "particles_nb": 4 }
+            }
+        },
+        "retina_detect": true
+    });
+}
