@@ -2137,3 +2137,19 @@ body {
     --gray-text: #94a3b8;      /* Slate Gray (Subtext) */
     --border-soft: rgba(255, 255, 255, 0.08); /* Subtle Borders */
 }
+/* --- Particle Background Setup --- */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Sabse peeche rakhne ke liye */
+    background-color: var(--bg-color); 
+}
+
+/* Ensure all website content stays above the particles */
+section, .navbar, .footer, .whatsapp-float {
+    position: relative;
+    z-index: 1;
+}
