@@ -2129,3 +2129,11 @@ body {
     background-color: #1ebe57;
 
 }
+:root {
+    --bg-color: #050507;       /* Deep Cosmic Black (Background) */
+    --bg-card: rgba(20, 20, 25, 0.6); /* Glassmorphism Dark (Cards) */
+    --text-color: #e2e8f0;     /* Soft White (Main Text) */
+    --accent-color: #2dd4bf;   /* Calm Teal / Cyan (Glow & Highlights) */
+    --gray-text: #94a3b8;      /* Slate Gray (Subtext) */
+    --border-soft: rgba(255, 255, 255, 0.08); /* Subtle Borders */
+}
