@@ -1,6 +1,5 @@
-// Typing Animation Logic (Can be re-applied to any text element)
+// Typing Animation Logic (Can be used if you add class .typing-text anywhere)
 const textElement = document.querySelector('.typing-text');
-// If you want to use it, just add <span class="typing-text"></span> to your HTML
 if(textElement) {
     const titles = ["Developer", "Python Expert", "3D Architect"];
     let titleIndex = 0;
@@ -32,39 +31,20 @@ if(textElement) {
     document.addEventListener('DOMContentLoaded', typeEffect);
 }
 
-// --- Animated Counter Statistics ---
-const counters = document.querySelectorAll('.counter');
-const speed = 150; 
+// Menu Toggle for Mobile
+const menuBtn = document.querySelector('.menu-btn');
+const navLinks = document.querySelector('.nav-links');
 
-const animateCounters = () => {
-    counters.forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.getAttribute('data-target'); 
-            const count = +counter.innerText.replace('+', ''); 
-            const inc = target / speed;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + inc) + "+";
-                setTimeout(updateCount, 20);
-            } else {
-                counter.innerText = target + "+";
-            }
-        };
-        updateCount();
+if(menuBtn) {
+    menuBtn.addEventListener('click', () => {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '100%';
+        navLinks.style.left = '0';
+        navLinks.style.width = '100%';
+        navLinks.style.background = 'rgba(5, 5, 7, 0.95)';
+        navLinks.style.padding = '20px 0';
+        navLinks.style.textAlign = 'center';
     });
-};
-
-// Scroll Trigger
-let hasAnimate = false;
-window.addEventListener('scroll', () => {
-    const section = document.querySelector('.stats-section');
-    if(section) {
-        const sectionPos = section.getBoundingClientRect().top;
-        const screenPos = window.innerHeight / 1.3;
-
-        if(sectionPos < screenPos && !hasAnimate) {
-            animateCounters();
-            hasAnimate = true; 
-        }
-    }
-});
+}
