@@ -1,2175 +1,1462 @@
-/* --- Global Variables & Reset --- */
+/* ==========================================================================
+   SAHIR VEERANCHERI — SOVEREIGN AI SYSTEMS ARCHITECT
+   Design System: Noir & Crimson Op-Art (Red, Black, White)
+   Inspired by Film Noir, Geometric Brutalism & Op-Art Hypnotic Vortex
+   ========================================================================== */
 
+/* --- CSS Variables & Design Tokens --- */
 :root {
+  /* Color Palette - Noir & Crimson Obsidian */
+  --bg-dark: #050505;
+  --bg-surface: #0a0a0a;
+  --bg-card: rgba(14, 14, 14, 0.78);
+  --bg-card-hover: rgba(22, 22, 22, 0.90);
 
-    --bg-color: #080808;       /* Dark Black Background */
+  /* Red Accent System */
+  --accent-red: #ef4444;
+  --accent-red-hover: #dc2626;
+  --accent-red-glow: rgba(239, 68, 68, 0.22);
+  --accent-red-dim: rgba(239, 68, 68, 0.10);
+  --accent-red-border: rgba(239, 68, 68, 0.35);
 
-    --text-color: #ffffff;     /* White Text */
+  /* High Contrast Monochrome Base */
+  --border-subtle: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-blur: 16px;
 
-    --accent-color: #ff4d4d;   /* The Red Glow/Highlight */
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-    --gray-text: #a3a3a3;
+  /* Text Colors */
+  --text-main: #f5f5f5;
+  --text-muted: #a3a3a3;
+  --text-dim: #737373;
+  --text-bright: #ffffff;
 
-    --font-main: 'Poppins', sans-serif;
-
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
-    font-family: var(--font-main);
-
+/* --- Base Reset & Global Styles --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-
+html {
+  font-family: var(--font-sans);
+  background: var(--bg-dark);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 body {
-
-    background-color: var(--bg-color);
-
-    color: var(--text-color);
-
-    overflow-x: hidden; /* Prevent horizontal scroll */
-
+  background: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
 }
 
-
-
-/* --- Navbar Styling --- */
-
-.navbar {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding: 20px 10%;
-
-    position: fixed;
-
-    width: 100%;
-
-    top: 0;
-
-    background: rgba(8, 8, 8, 0.9); /* Transparent Black */
-
-    backdrop-filter: blur(10px);
-
-    z-index: 1000;
-
+::selection {
+  background: var(--accent-red);
+  color: #000;
 }
 
-
-
-.logo {
-
-    font-size: 24px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
+/* Atmospheric Ambient Canvas */
+#aurora-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
 }
 
-
-
-.logo .dot {
-
-    color: var(--accent-color);
-
-    font-size: 30px;
-
+.ambient-canvas-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
 
+/* ==========================================================================
+   NAVIGATION DOCK
+   ========================================================================== */
+.dock-container {
+  position: fixed;
+  top: 18px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.nav-dock {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 18px;
+  background: #000;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 9999px;
+  transition: border-color var(--transition-smooth);
+}
+
+.nav-dock:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-bright);
+}
+
+.brand-monogram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--accent-red);
+  color: #000;
+  font-weight: 800;
+  font-size: 11px;
+  border-radius: 4px;
+  letter-spacing: -0.02em;
+}
+
+.brand-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
 
 .nav-links {
-
-    list-style: none;
-
-    display: flex;
-
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-
-
-.nav-links li {
-
-    margin: 0 20px;
-
+.nav-item {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  transition: color var(--transition-fast), background var(--transition-fast);
 }
 
-
-
-.nav-links a {
-
-    text-decoration: none;
-
-    color: var(--text-color);
-
-    font-size: 16px;
-
-    font-weight: 500;
-
-    transition: 0.3s;
-
+.nav-item:hover {
+  color: var(--text-bright);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-
-
-.nav-links a:hover, .nav-links a.active {
-
-    color: var(--accent-color);
-
+.nav-item.active {
+  color: var(--text-bright);
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  font-weight: 600;
 }
 
-
-
-.menu-btn {
-
-    display: none; /* Mobile ke liye baad main visible karenge */
-
-    font-size: 24px;
-
-    cursor: pointer;
-
+.dock-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  padding-left: 8px;
+  border-left: 1px solid var(--border-subtle);
 }
 
-
-
-/* --- Hero Section Styling --- */
-
-.hero {
-
-    display: flex;
-
-    justify-content: center; /* Center align items */
-
-    align-items: center;
-
-    min-height: 100vh;
-
-    padding: 0 10%;
-
-    gap: 50px; /* Space between text and image */
-
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent-red);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-red);
+  animation: pulseDot 2s ease-in-out infinite;
 }
 
-
-
-/* Text Content Side */
-
-.hero-content {
-
-    flex: 1;
-
-    max-width: 600px;
-
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
 }
 
-
-
-.hero-content h3 {
-
-    font-size: 32px;
-
-    font-weight: 700;
-
+/* ==========================================================================
+   BUTTONS & COMMON UI ELEMENTS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all var(--transition-fast);
 }
 
-
-
-.hero-content h1 {
-
-    font-size: 56px;
-
-    font-weight: 700;
-
-    line-height: 1.2;
-
-    margin: 10px 0 20px;
-
+.btn-primary {
+  background: var(--accent-red);
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 4px 20px var(--accent-red-glow);
 }
 
-
-
-.text-highlight {
-
-    color: var(--accent-color);
-
+.btn-primary:hover {
+  background: #ff3333;
+  box-shadow: 0 8px 30px rgba(239, 68, 68, 0.45);
+  transform: translateY(-2px);
+  color: #000;
 }
 
-
-
-/* Dynamic Text Effect Styling */
-
-.typing-text {
-
-    color: var(--accent-color);
-
-    border-right: 2px solid var(--accent-color); /* Cursor effect */
-
-    padding-right: 5px;
-
-    animation: blink 0.7s infinite;
-
+.btn-glass {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-bright);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
 }
 
-
-
-.hero-content p {
-
-    font-size: 16px;
-
-    color: var(--gray-text);
-
-    margin-bottom: 30px;
-
-    line-height: 1.6;
-
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  color: #fff;
 }
 
-
-
-/* Social Icons */
-
-.social-icons {
-
-    display: flex;
-
-    margin-bottom: 40px;
-
+.btn-secondary {
+  background: transparent;
+  color: var(--text-bright);
+  border: 1px solid var(--border-subtle);
 }
 
-
-
-.social-icons a {
-
-    display: inline-flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    width: 45px;
-
-    height: 45px;
-
-    background: transparent;
-
-    border: 2px solid var(--accent-color);
-
-    border-radius: 50%;
-
-    color: var(--accent-color);
-
-    font-size: 20px;
-
-    text-decoration: none;
-
-    margin-right: 15px;
-
-    transition: 0.4s ease;
-
+.btn-secondary:hover {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+  transform: translateY(-2px);
 }
 
-
-
-.social-icons a:hover {
-
-    background: var(--accent-color);
-
-    color: var(--bg-color);
-
-    box-shadow: 0 0 15px var(--accent-color);
-
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 12px;
 }
 
-
-
-/* Hire Me Button */
-
-.btn-hire {
-
-    display: inline-block;
-
-    padding: 12px 35px;
-
-    background: transparent;
-
-    border: 2px solid var(--accent-color);
-
-    border-radius: 30px;
-
-    color: var(--text-color);
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    text-decoration: none;
-
-    transition: 0.4s ease;
-
+.btn-icon {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-
-
-/* --- Hero Buttons Wrapper --- */
-
-.hero-btns {
-
-    display: flex;
-
-    gap: 20px; /* Buttons ke darmiyan 20px ka faasla */
-
-    margin-top: 30px; /* Text se thoda neeche */
-
+/* Glass Card */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 28px;
+  transition: border-color var(--transition-smooth), transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
-
-
-/* --- Mobile Responsiveness --- */
-
-@media (max-width: 768px) {
-
-    .hero-btns {
-
-        justify-content: center; /* Mobile pe center ho jayein */
-
-    }
-
+.glass-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(239, 68, 68, 0.08);
+  transform: translateY(-2px);
 }
 
-
-
-/* Update .btn-hire in style.css */
-
-.btn-hire {
-
-    display: inline-flex; /* Text aur Icon center karne ke liye */
-
-    align-items: center;
-
-    gap: 10px; /* Text aur Download icon ke beech gap */
-
-    padding: 12px 35px;
-
-    background: transparent;
-
-    border: 2px solid var(--accent-color);
-
-    border-radius: 30px;
-
-    color: var(--text-color);
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    text-decoration: none;
-
-    transition: 0.4s ease;
-
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+  min-height: min(100vh, 100svh);
+  padding: 110px max(24px, calc((100vw - 1360px) / 2)) 42px;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--bg-dark);
 }
 
+.hero-section::before,
+.hero-section::after { display: none; }
 
-
-/* Dono buttons hover pe Red ho jayenge */
-
-.btn-hire:hover {
-
-    background: var(--accent-color);
-
-    color: #fff;
-
-    box-shadow: 0 0 20px var(--accent-color);
-
-    transform: translateY(-3px); /* Thoda sa upar uthega click karne jaisa feel */
-
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
+.grid-line { background: rgba(255,255,255,.018); }
+.line-1 { left: 17%; top: 0; width: 1px; height: 100%; }
+.line-2 { left: 50%; top: 0; width: 1px; height: 100%; background: rgba(255,255,255,.026); }
+.line-3 { right: 17%; top: 0; width: 1px; height: 100%; }
+
+.grid-crosshair,
+.grid-coord,
+.hero-giant-bg { display: none; }
+
+/* One full-width standalone SVG wordmark row. */
+.hero-wordmark-svg {
+  grid-row: 1;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  line-height: 0;
+  margin: 0 auto;
 }
 
-
-
-/* Image Side (The Glow Effect) */
-
-/* Image Wrapper */
-
-.hero-image {
-
-    flex: 1;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center; 
-
-    position: relative;
-
-    z-index: 1; /* Image ko glow ke upar rakhne ke liye */
-
+.hero-wordmark-svg svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-
-
-/* Glow Effect - Ab ye image ke colors ko kharab nahi karega */
-
-.glow-circle {
-
-    position: absolute;
-
-    width: 300px;
-
-    height: 300px;
-
-    background: var(--accent-color); /* Theme color uthayega */
-
-    border-radius: 50%;
-
-    filter: blur(120px); /* Bohot soft light effect */
-
-    opacity: 0.15; /* Halka sa glow, taaki image clear dikhe */
-
-    z-index: -1;   /* Image ke peeche */
-
+.hero-wordmark-svg text {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  fill: rgba(201, 58, 58, .22);
+  stroke: #c93a3a;
+  stroke-width: 1.5;
+  paint-order: stroke;
 }
 
-
-
-/* Image Styling - Bilkul Original Color */
-
-.hero-image img {
-
-    width: 280px;  /* Size control */
-
-    height: 280px;
-
-    object-fit: cover; /* Image stretch nahi hogi */
-
-    border-radius: 50%; 
-
-    
-
-    /* Koi border ya filter nahi, taaki colors "Pop" karein */
-
-    box-shadow: none; 
-
-    transition: transform 0.3s ease;
-
+/* Desktop hero grid with equal side tracks around a fixed 380px portrait. */
+.hero-stage-grid {
+  grid-row: 2;
+  position: relative;
+  z-index: 2;
+  width: min(1360px, 100%);
+  margin: -3.6vw auto 0;
+  min-height: min(560px, calc(100svh - 180px));
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(280px, 380px) minmax(300px, 1fr);
+  grid-template-areas: 'left photo right';
+  grid-template-rows: minmax(0, 1fr);
+  column-gap: clamp(24px, 3vw, 56px);
+  row-gap: 0;
+  align-items: end;
 }
 
-
-
-.hero-image img:hover {
-
-    transform: scale(1.05); /* Sirf halka sa zoom */
-
+.hero-flank {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 8px;
 }
 
-/* Main Profile Image */
+.left-flank { grid-area: left; }
+.right-flank { grid-area: right; align-self: stretch; padding-right: 0; }
 
-.hero-image img {
+.hero-script {
+  font: 600 clamp(32px, 3.4vw, 44px)/1 'Caveat', cursive;
+  color: #fff;
+  margin: 0 0 14px;
+}
 
+.hero-name {
+  display: inline-block;
+  width: fit-content;
+  color: #fff;
+  font: 400 clamp(56px, 6.4vw, 92px)/1 'Bebas Neue', sans-serif;
+  margin: 0 0 22px;
+  padding: .06em .16em;
+  background: var(--accent-red);
+}
+
+.accent-red-dot { color: #fff; margin-left: .05em; }
+
+.hero-role-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+  font: 700 13px/1.3 var(--font-mono);
+  letter-spacing: .04em;
+  margin: 0 0 28px;
+}
+
+.pill-dot { color: var(--accent-red); font-size: 13px; }
+
+.hero-desc {
+  max-width: 42ch;
+  margin: 26px 0 30px;
+  color: #c4c4cb;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.hero-desc strong { color: #fff; font-weight: 700; }
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+
+.btn-crimson,
+.btn-glass {
+  padding: 15px 20px;
+  font: 700 13px/1 var(--font-mono);
+  letter-spacing: .08em;
+  border-radius: 0;
+}
+
+.hero-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,.16);
+}
+
+.hero-stat-box {
+  min-height: 62px;
+  padding: 12px;
+}
+
+.hero-stat-box:nth-child(n+2) {
+  border-left: 1px solid rgba(255,255,255,.12);
+}
+
+.stat-val {
+  color: #fff;
+  font: 700 20px/1.1 var(--font-mono);
+  letter-spacing: -.02em;
+}
+
+.hero-stat-box:nth-child(1) .stat-val { color: var(--accent-red); }
+.stat-lbl { color: #a8a8b0; font: 500 13px/1.3 var(--font-mono); letter-spacing: .05em; }
+
+/* Center portrait: exact centered track, deliberate panel frame, bottom fade. */
+.hero-center-col {
+  grid-area: photo;
+  align-self: end;
+  min-width: 0;
+  display: grid;
+  place-items: end center;
+}
+
+.hero-cutout-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: visible;
+  background: linear-gradient(154deg, #050505 0%, #111111 58%, #050505 100%);
+  opacity: 1;
+}
+
+.hero-cutout-wrap::before,
+.hero-cutout-wrap::after { display: none; }
+
+.hero-portrait-panel {
+  position: absolute;
+  inset: 18% 6% 0;
+  z-index: 1;
+  background: var(--accent-red);
+  transform: translate(14px, -14px);
+}
+
+.hero-portrait-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255,255,255,.35);
+  transform: translate(-14px, 14px);
+}
+
+.hero-cutout-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 12%;
+  border-radius: 4px;
+  filter: brightness(1.05) contrast(1.05);
+  -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 99%);
+  mask-image: linear-gradient(to bottom, black 82%, transparent 99%);
+}
+
+.cutout-status-badge {
+  position: absolute;
+  left: -8px;
+  bottom: 14px;
+  z-index: 5;
+  padding: 7px 12px;
+  background: #000;
+  border: 1px solid var(--accent-red);
+  color: #fff;
+  font: 700 13px/1.2 var(--font-mono);
+  letter-spacing: .05em;
+}
+
+.status-pulse-red { color: var(--accent-red); animation: pulseDot 2s ease-in-out infinite; }
+
+/* HUD cards use readable body/label sizes. */
+.right-flank .hud-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.hud-card {
+  padding: 20px 24px;
+  background: #0f0f10;
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.hud-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.hud-idx {
+  color: #fff;
+  font: 700 13px/1 var(--font-mono);
+}
+
+.hud-tag {
+  margin-left: auto;
+  padding: 4px 8px;
+  border: 1px solid rgba(255,255,255,.18);
+  color: #c4c4cb;
+  font: 700 13px/1 var(--font-mono);
+  letter-spacing: .06em;
+}
+
+.hud-card-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.hud-card-desc {
+  color: #c4c4cb;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.hud-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.hud-tech-tags .tech-tag {
+  border: 1px solid rgba(255,255,255,.18);
+  background: transparent;
+  color: #c4c4cb;
+  padding: 5px 12px;
+  font: 500 13px/1 var(--font-mono);
+  border-radius: 4px;
+}
+
+/* Responsive: stack hero tracks under 1000px. */
+@media (max-width: 1000px) {
+  .hero-stage-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'photo' 'left' 'right';
+    gap: 28px;
+    min-height: 0;
+    margin-top: 0;
+  }
+
+  .hero-section { padding-top: 34px; }
+
+  .hero-wordmark-svg { margin-bottom: 0; }
+
+  .hero-center-col {
+    max-width: 380px;
     width: 100%;
+    margin: 0 auto;
+  }
 
-    max-width: 320px; /* Height/Width control yahan se hogi (pehle 450px tha) */
-
-    height: auto;
-
-    border-radius: 50%; 
-
-    object-fit: cover;
-
-    /* filter: grayscale(100%); <-- Ye line hata di hai taaki color full rahe */
-
-    border: 3px solid rgba(255, 77, 77, 0.3); /* Slight border matching theme */
-
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-
-    transition: 0.5s ease;
-
+  .grid-coord { display: none; }
+  .brand-label { display: none; }
 }
 
+@media (max-width: 480px) {
+  .hero-section { padding: 34px 20px 28px; }
 
+  .hero-wordmark-svg { width: 100%; }
 
-/* Hover Effect - Thoda sa zoom aur glow */
+  .hero-role-pill {
+    width: 100%;
+    justify-content: center;
+  }
 
-.hero-image img:hover {
+  .hero-actions { flex-direction: column; }
 
-    transform: scale(1.05); /* Slight zoom */
+  .btn-crimson,
+  .btn-glass { width: 100%; }
 
-    border-color: var(--accent-color);
+  .hero-stats-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
-    box-shadow: 0 0 30px rgba(255, 77, 77, 0.4);
+  .hero-stat-box { padding: 10px 6px; }
+  .stat-val { font-size: 15px; }
+  .stat-lbl { font-size: 13px; }
 
+  .cutout-status-badge { max-width: calc(100% - 16px); }
 }
 
-
-
-/* --- Responsive Design (Mobile) --- */
-
-@media (max-width: 992px) {
-
-    .hero {
-
-        flex-direction: column-reverse; /* Mobile pe image upar, text neeche */
-
-        text-align: center;
-
-        padding-top: 100px;
-
-    }
-
-
-
-    .hero-content h1 {
-
-        font-size: 40px;
-
-    }
-
-    
-
-    .social-icons {
-
-        justify-content: center;
-
-    }
-
-    
-
-    .navbar {
-
-        padding: 20px 5%;
-
-    }
-
-    
-
-    .nav-links {
-
-        display: none; /* Simple mobile menu implementation required via JS */
-
-    }
-
+@media (prefers-reduced-motion: reduce) {
+  .hero-build,
+  .reveal-item {
+    transition: none;
+    transform: none;
+  }
 }
 
-
-
-
-
-/* --- Services Section --- */
-
-.services {
-
-    padding: 100px 10%;
-
-    background: var(--bg-color); /* Same black background */
-
-    text-align: center;
-
+/* ==========================================================================
+   COMMON SECTION HEADERS
+   ========================================================================== */
+.section {
+  padding: 100px 24px;
+  position: relative;
 }
 
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+.section-header {
+  margin-bottom: 48px;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent-red);
+  margin-bottom: 8px;
+}
 
 .section-title {
-
-    font-size: 40px;
-
-    font-weight: 700;
-
-    margin-bottom: 60px;
-
-    color: var(--text-color);
-
+  font-size: clamp(28px, 3.8vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-bright);
+  margin-bottom: 10px;
 }
 
-
-
-.services-container {
-
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
-
-    gap: 30px;
-
+.section-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 640px;
 }
 
-
-
-/* Service Card Styling */
-
-.service-box {
-
-    background: #111111; /* Slightly lighter than pure black */
-
-    padding: 40px 30px;
-
-    border-radius: 20px;
-
-    border: 1px solid #222; /* Subtle border */
-
-    text-align: center;
-
-    transition: 0.4s ease;
-
-    position: relative;
-
-    overflow: hidden;
-
+/* ==========================================================================
+   FLAGSHIP SHOWCASE
+   ========================================================================== */
+.flagship-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
-
-
-/* Hover Effect: Card Upar Uthega aur Border Glow karega */
-
-.service-box:hover {
-
-    transform: translateY(-10px);
-
-    border-color: var(--accent-color);
-
-    box-shadow: 0 0 20px rgba(255, 87, 51, 0.2); /* Soft glow using your theme color */
-
+.highlighted-card {
+  border-color: rgba(239, 68, 68, 0.35);
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.75) 0%, rgba(10, 10, 10, 0.90) 100%);
+  position: relative;
 }
 
-
-
-/* Icon Styling */
-
-.service-icon {
-
-    font-size: 50px;
-
-    color: var(--accent-color);
-
-    margin-bottom: 20px;
-
-    transition: 0.4s;
-
+.card-glow-red {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-red-glow) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.45;
 }
 
-
-
-.service-box:hover .service-icon {
-
-    transform: scale(1.1); /* Icon thoda bada hoga hover pe */
-
-    text-shadow: 0 0 10px var(--accent-color);
-
+.flagship-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
-
-
-/* Text Styling */
-
-.service-box h3 {
-
-    font-size: 24px;
-
-    margin-bottom: 15px;
-
-    font-weight: 600;
-
+.flagship-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--accent-red);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(239, 68, 68, 0.30);
 }
 
-
-
-.service-box p {
-
-    font-size: 15px;
-
-    color: var(--gray-text);
-
-    line-height: 1.6;
-
-    margin-bottom: 25px;
-
+.flagship-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
 }
 
-
-
-/* Read More Button (Chota sa) */
-
-.btn-read {
-
-    display: inline-block;
-
-    padding: 10px 25px;
-
-    border-radius: 25px;
-
-    background: transparent;
-
-    border: 2px solid var(--accent-color);
-
-    color: var(--accent-color);
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    text-decoration: none;
-
-    transition: 0.3s;
-
+.flagship-title {
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-bright);
+  margin-bottom: 12px;
 }
 
-
-
-.service-box:hover .btn-read {
-
-    background: var(--accent-color);
-
-    color: #fff;
-
+.flagship-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 820px;
+  line-height: 1.6;
+  margin-bottom: 24px;
 }
 
-
-
-/* --- Projects Section --- */
-
-.projects {
-
-    padding: 100px 10%;
-
-    background: #050505; /* Slightly darker than services bg */
-
+.flagship-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
 }
 
-
-
-.projects-container {
-
-    display: grid;
-
-    /* Responsive Grid: 1 col mobile, 2 col tablet, 3 col desktop */
-
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-
-    gap: 40px;
-
+.metric-pill {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
 }
 
-
-
-/* Project Card Base */
-
-.project-card {
-
-    background: #111;
-
-    border-radius: 20px;
-
-    overflow: hidden; /* Image corners round karne ke liye */
-
-    border: 1px solid #222;
-
-    transition: 0.4s ease;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-
+.metric-num {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-red);
 }
 
-
-
-.project-card:hover {
-
-    transform: translateY(-10px); /* Upar uthega */
-
-    border-color: var(--accent-color); /* Red Border on Hover */
-
-    box-shadow: 0 10px 30px rgba(255, 87, 51, 0.15); /* Soft Glow */
-
+.metric-desc {
+  font-size: 11px;
+  color: var(--text-dim);
 }
 
+/* 7-Layer Architecture Interactive Explorer */
+.saai-architecture-explorer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 24px;
+}
 
+.explorer-header {
+  margin-bottom: 16px;
+}
 
-/* Image Styling */
+.explorer-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
 
-.project-img {
+.explorer-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+}
 
+.layer-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.layer-tab {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.layer-tab:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--text-bright);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.layer-tab.active {
+  background: var(--accent-red);
+  color: #000;
+  font-weight: 700;
+  border-color: var(--accent-red);
+  box-shadow: 0 2px 10px var(--accent-red-glow);
+}
+
+.layer-inspector-pane {
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 140px;
+}
+
+.layer-inspect-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-red);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.layer-inspect-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+}
+
+.layer-inspect-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.tech-tags-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-bright);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+/* Secondary Flagship Grid */
+.flagship-subgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.subgrid-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.subgrid-top {
+  margin-bottom: 20px;
+}
+
+.subgrid-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.subgrid-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+}
+
+.subgrid-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.spec-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spec-item::before {
+  content: '▪';
+  color: var(--accent-red);
+}
+
+.subgrid-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   BENTO GRID PROJECTS
+   ========================================================================== */
+.bento-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--text-bright);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.filter-btn.active {
+  background: var(--accent-red);
+  color: #000;
+  font-weight: 700;
+  border-color: var(--accent-red);
+  box-shadow: 0 2px 10px var(--accent-red-glow);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.bento-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bento-card.hidden {
+  display: none !important;
+}
+
+.bento-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.category-chip {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--accent-red);
+  border: 1px solid rgba(239, 68, 68, 0.30);
+}
+
+.bento-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.bento-link {
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.bento-link:hover {
+  color: var(--accent-red);
+}
+
+.bento-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+}
+
+.bento-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.bento-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 14px;
+}
+
+.bento-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   TECHNICAL STACK SECTION
+   ========================================================================== */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.stack-group-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-red);
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.stack-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-bright);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+}
+
+.tech-pill:hover {
+  border-color: var(--accent-red);
+  color: #fff;
+}
+
+/* ==========================================================================
+   ABOUT & PHILOSOPHY
+   ========================================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.about-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-text strong {
+  color: var(--text-bright);
+}
+
+.quote-box {
+  border-left: 3px solid var(--accent-red);
+  padding-left: 18px;
+  font-style: italic;
+  color: var(--text-bright);
+  margin-top: 24px;
+}
+
+.principles-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.principle-item {
+  display: flex;
+  gap: 12px;
+}
+
+.principle-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-red);
+  min-width: 24px;
+}
+
+.principle-title {
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 2px;
+}
+
+.principle-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   CONTACT SECTION
+   ========================================================================== */
+.contact-card {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-glow-red {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-red-glow) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.contact-title {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-bright);
+  margin-bottom: 12px;
+}
+
+.contact-subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto 36px;
+}
+
+.email-action-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-subtle);
+  padding: 8px 10px 8px 18px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.email-address {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+.social-links-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+}
+
+.social-pill:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--text-bright);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION
+   ========================================================================== */
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #000;
+  color: #fff;
+  border: 1px solid var(--accent-red);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 28px rgba(239, 68, 68, 0.35);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.toast-notification.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast-icon {
+  background: var(--accent-red);
+  color: #000;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+/* Section divider — coordinate label | rule | index label.
+   Base rule was missing, so the bar collapsed into one run-together string. */
+.section-divider-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+
+.divider-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-subtle) 15%, var(--border-subtle) 85%, transparent);
+}
+
+@media (max-width: 1040px) {
+  .hero-section {
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .hero-stage-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'photo' 'left' 'right';
+    gap: 24px;
+    min-height: 0;
+    margin-top: 0;
+  }
+
+  .hero-wordmark-svg { margin-bottom: 0; }
+
+  .hero-center-col {
+    grid-area: photo;
+    max-width: 380px;
     width: 100%;
+    margin: 0 auto;
+  }
 
-    height: 200px; /* Fixed height for consistency */
+  .left-flank { grid-area: left; }
+  .right-flank { grid-area: right; }
 
-    overflow: hidden;
-
+  .hero-script { font-size: 30px; }
+  .hero-name { font-size: clamp(38px, 4.2vw, 52px); }
+  .hero-desc { max-width: 56ch; }
+  .hero-role-pill { font-size: 13px; }
+  .btn-crimson, .btn-glass { padding: 14px 18px; font-size: 13px; }
+  .hero-stats-row { margin-top: 26px; }
+  .stat-val { font-size: 18px; }
+  .stat-lbl { font-size: 13px; }
+  .hero-cutout-wrap { width: min(100%, 380px); }
+  .hud-card { padding: 18px 20px; }
+  .hud-card-title { font-size: 18px; }
+  .hud-card-desc { font-size: 15px; }
+  .grid-coord { display: none; }
 }
 
+@media (max-width: 768px) {
+  .dock-container {
+    top: 12px;
+    padding: 0 10px;
+  }
 
-
-.project-img img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover; /* Image stretch nahi hogi */
-
-    transition: 0.5s ease;
-
-}
-
-
-
-.project-card:hover .project-img img {
-
-    transform: scale(1.1); /* Image zoom on hover */
-
-}
-
-
-
-/* Content Area */
-
-.project-content {
-
-    padding: 25px;
-
-}
-
-
-
-.project-content h3 {
-
-    font-size: 22px;
-
-    margin-bottom: 10px;
-
-}
-
-
-
-.project-content p {
-
-    font-size: 14px;
-
-    color: var(--gray-text);
-
-    margin-bottom: 20px;
-
-    line-height: 1.5;
-
-}
-
-
-
-/* Tech Stack Tags */
-
-.tech-stack {
-
-    margin-bottom: 20px;
-
-    display: flex;
-
+  .nav-dock {
     gap: 10px;
-
-    flex-wrap: wrap;
-
-}
-
-
-
-.tech-stack span {
-
-    font-size: 12px;
-
-    background: rgba(255, 255, 255, 0.1);
-
-    padding: 5px 12px;
-
-    border-radius: 15px;
-
-    color: #ddd;
-
-}
-
-
-
-/* Action Buttons */
-
-.project-links {
-
-    display: flex;
-
-    gap: 15px;
-
-}
-
-
-
-.btn-outline, .btn-fill {
-
-    padding: 8px 20px;
-
-    border-radius: 20px;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    text-decoration: none;
-
-    transition: 0.3s;
-
-}
-
-
-
-/* Outline Button (Github) */
-
-.btn-outline {
-
-    border: 2px solid var(--accent-color);
-
-    color: var(--text-color);
-
-}
-
-
-
-.btn-outline:hover {
-
-    background: var(--accent-color);
-
-    color: #fff;
-
-}
-
-
-
-/* Fill Button (Demo) */
-
-.btn-fill {
-
-    background: var(--accent-color);
-
-    color: #fff;
-
-    border: 2px solid var(--accent-color);
-
-}
-
-
-
-.btn-fill:hover {
-
-    background: transparent;
-
-    color: var(--text-color);
-
-}
-
-
-
-/* Project Card Media (Video Container) */
-
-.project-media {
-
-    width: 100%;
-
-    height: 220px; /* Thoda height badhaya taaki video clear dikhe */
-
-    overflow: hidden;
-
-    position: relative;
-
-    background: #000; /* Video load hone se pehle black dikhe */
-
-}
-
-
-
-/* Video Styling */
-
-.project-media video {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover; /* Video poore box ko cover karegi, black bars nahi ayenge */
-
-    transition: transform 0.5s ease;
-
-    opacity: 0.8; /* Default mein thoda dark rakha taaki text focus mein rahe */
-
-}
-
-
-
-/* Hover Effect */
-
-.project-card:hover .project-media video {
-
-    transform: scale(1.05); /* Slight Zoom */
-
-    opacity: 1; /* Hover pe video full bright ho jayegi */
-
-}
-
-
-
-.project-media video {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: all 0.5s ease; /* Smooth transition */
-
-    
-
-    /* Optional: Agar aap chahte hain ke video play hone par thodi highlight ho */
-
-    filter: brightness(0.8); 
-
-}
-
-
-
-/* Hover par video full bright ho jaye */
-
-.project-card:hover .project-media video {
-
-    filter: brightness(1.1);
-
-}
-
-/* --- Skills Section (Bigger & Centered) --- */
-
-.skills {
-
-    padding: 80px 0;
-
-    background: #080808;
-
-    overflow: hidden;
-
-}
-
-
-
-/* Heading Center */
-
-.section-title {
-
-    text-align: center; /* Text Center */
-
-    font-size: 36px;
-
-    margin-bottom: 60px;
-
-    color: #fff;
-
-}
-
-
-
-.marquee-container {
-
-    width: 100%;
-
-    overflow: hidden;
-
-    padding: 30px 0; /* Box shadow kat na jaye is liye padding */
-
-    position: relative;
-
-}
-
-
-
-.marquee-content {
-
-    display: flex;
-
-    gap: 40px; /* Gap badhaya taaki saaf dikhe */
-
-    width: max-content;
-
-    /* Speed thodi slow ki taaki bade boxes araam se dikhein */
-
-    animation: scroll 30s linear infinite; 
-
-}
-
-
-
-.marquee-content:hover {
-
-    animation-play-state: paused;
-
-}
-
-
-
-/* --- Bigger Square Box Styling --- */
-
-.skill-box {
-
-    width: 180px;  /* Size Bada Kiya */
-
-    height: 180px; /* Size Bada Kiya */
-
-    background: #111;
-
-    border-radius: 25px;
-
-    display: flex;
-
+    padding: 6px 12px;
+  }
+
+  .nav-links { display: none; }
+
+  .hero-section { padding: 34px 18px 28px; }
+
+  .hero-section::before,
+  .hero-section::after,
+  .grid-line.line-1,
+  .grid-line.line-3,
+  .grid-crosshair { display: none; }
+
+  .hero-stage-grid { gap: 22px; }
+  .left-flank,
+  .right-flank { align-self: auto; }
+  .hero-desc { max-width: 620px; }
+  .hero-actions { width: 100%; }
+  .hero-stats-row { width: 100%; margin-top: 24px; }
+  .hero-cutout-wrap { width: min(100%, 390px); }
+  .cutout-status-badge { left: 4%; bottom: 7%; }
+  .hud-stack { gap: 10px; }
+  .hud-card-title { font-size: 18px; }
+  .hud-card-desc { font-size: 15px; }
+
+  .section-divider-bar {
+    padding-left: 18px;
+    padding-right: 18px;
+    font-size: 13px;
+  }
+
+  .section { padding: 60px 16px; }
+  .flagship-subgrid,
+  .bento-grid { grid-template-columns: 1fr; }
+
+  .email-action-box {
     flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    border: 1px solid #222;
-
-    transition: 0.4s ease;
-
-    cursor: pointer;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-
-    flex-shrink: 0;
-
+    padding: 16px;
+    width: 100%;
+  }
 }
 
-
-
-/* Text Style */
-
-.skill-box span {
-
-    margin-top: 20px;
-
-    font-size: 18px; /* Text bhi thoda bada kiya */
-
-    font-weight: 600;
-
-    color: #ccc;
-
-    transition: 0.3s;
-
-}
-
-
-
-/* Icon Style */
-
-.skill-box i {
-
-    font-size: 60px; /* Icon ka size bada kiya */
-
-    transition: 0.3s;
-
-}
-
-
-
-/* --- Brand Colors (New Added) --- */
-
-
-
-/* Java: Orange/Red */
-
-.java i { color: #f89820; }
-
-.java:hover { border-color: #f89820; box-shadow: 0 0 25px rgba(248, 152, 32, 0.4); }
-
-
-
-/* Godot: Blue */
-
-.godot i { color: #478cbf; }
-
-.godot:hover { border-color: #478cbf; box-shadow: 0 0 25px rgba(71, 140, 191, 0.4); }
-
-
-
-/* Game Dev: Purple */
-
-.gamedev i { color: #9b59b6; }
-
-.gamedev:hover { border-color: #9b59b6; box-shadow: 0 0 25px rgba(155, 89, 182, 0.4); }
-
-
-
-/* Python */
-
-.python i { color: #3776AB; }
-
-.python:hover { border-color: #3776AB; box-shadow: 0 0 25px rgba(55, 118, 171, 0.4); }
-
-
-
-/* JavaScript */
-
-.js i { color: #F7DF1E; }
-
-.js:hover { border-color: #F7DF1E; box-shadow: 0 0 25px rgba(247, 223, 30, 0.4); }
-
-
-
-/* PlayCanvas */
-
-.playcanvas i { color: #FF5733; }
-
-.playcanvas:hover { border-color: #FF5733; box-shadow: 0 0 25px rgba(255, 87, 51, 0.4); }
-
-
-
-/* Automation */
-
-.automation i { color: #00E5FF; }
-
-.automation:hover { border-color: #00E5FF; box-shadow: 0 0 25px rgba(0, 229, 255, 0.4); }
-
-
-
-/* C++ */
-
-.cpp i { color: #00599C; }
-
-.cpp:hover { border-color: #00599C; box-shadow: 0 0 25px rgba(0, 89, 156, 0.4); }
-
-
-
-/* HTML */
-
-.html i { color: #E34F26; }
-
-.html:hover { border-color: #E34F26; box-shadow: 0 0 25px rgba(227, 79, 38, 0.4); }
-
-
-
-/* --- Hover General Effects --- */
-
-.skill-box:hover {
-
-    transform: translateY(-15px);
-
-    background: #1a1a1a;
-
-}
-
-
-
-.skill-box:hover span {
-
-    color: #fff;
-
-}
-
-
-
-/* Animation */
-
-@keyframes scroll {
-
-    0% { transform: translateX(0); }
-
-    100% { transform: translateX(-50%); }
-
-}
-
-/* --- Achievements Section --- */
-
-.achievements {
-
-    padding: 100px 10%;
-
-    background: #080808; /* Dark Background */
-
-}
-
-
-
-.achievements-container {
-
-    display: grid;
-
-    /* Responsive Grid: Cards will adjust automatically */
-
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-
-    gap: 30px;
-
-}
-
-
-
-/* Card Styling */
-
-.achievement-card {
-
-    background: #111;
-
-    padding: 30px;
-
-    border-radius: 15px;
-
-    display: flex;
-
-    align-items: flex-start; /* Icon aur text top aligned */
-
-    gap: 20px;
-
-    border: 1px solid #222;
-
-    transition: 0.4s ease;
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-
-
-/* Hover Effect */
-
-.achievement-card:hover {
-
-    transform: translateY(-5px);
-
-    border-color: var(--accent-color);
-
-    box-shadow: 0 5px 20px rgba(255, 87, 51, 0.1); /* Soft theme glow */
-
-}
-
-
-
-/* Left Accent Line (Stylish Touch) */
-
-.achievement-card::before {
-
-    content: '';
-
-    position: absolute;
-
-    left: 0;
-
-    top: 0;
-
-    height: 100%;
-
-    width: 4px;
-
-    background: var(--accent-color);
-
-    opacity: 0.5;
-
-    transition: 0.3s;
-
-}
-
-
-
-.achievement-card:hover::before {
-
-    opacity: 1; /* Full Brightness on Hover */
-
-    width: 6px; /* Thoda thick ho jayega */
-
-}
-
-
-
-/* Icon Styling */
-
-.card-icon {
-
-    font-size: 30px;
-
-    color: var(--accent-color);
-
-    background: rgba(255, 87, 51, 0.1); /* Halka background icon ke peeche */
-
-    padding: 15px;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    min-width: 60px; /* Fixed width taaki shape kharab na ho */
-
-    height: 60px;
-
-}
-
-
-
-/* Text Content */
-
-.card-content h3 {
-
-    font-size: 20px;
-
-    font-weight: 600;
-
-    margin-bottom: 5px;
-
-    color: #fff;
-
-}
-
-
-
-.card-content .date {
-
+@media (max-width: 480px) {
+  .hero-section { padding: 34px 15px 22px; }
+  .hero-script { font-size: 27px; }
+  .hero-name { font-size: 40px; }
+  .hero-role-pill { width: 100%; justify-content: center; }
+  .hero-actions { flex-direction: column; }
+  .btn-crimson, .btn-glass { width: 100%; }
+  .hero-cutout-wrap { width: min(100%, 330px); }
+  .cutout-status-badge {
+    max-width: calc(100% - 16px);
     font-size: 13px;
-
-    color: var(--accent-color);
-
-    font-weight: 500;
-
-    display: block;
-
-    margin-bottom: 10px;
-
+  }
+  .grid-coord { display: none; }
+  .section-divider-bar { grid-template-columns: 1fr auto; }
+  .divider-line { display: none; }
+  .brand-label { display: none; }
 }
 
-
-
-.card-content p {
-
-    font-size: 14px;
-
-    color: var(--gray-text);
-
-    line-height: 1.6;
-
-}
-
-
-
-/* Mobile Responsiveness */
-
-@media (max-width: 768px) {
-
-    .achievement-card {
-
-        flex-direction: column; /* Mobile pe icon upar, text neeche */
-
-        align-items: center;
-
-        text-align: center;
-
-    }
-
-    
-
-    .achievement-card::before {
-
-        width: 100%; /* Top border ban jayega mobile pe */
-
-        height: 4px;
-
-        top: 0;
-
-        left: 0;
-
-    }
-
-}
-
-
-
-/* --- Achievements Section (With Images) --- */
-
-.achievements {
-
-    padding: 100px 10%;
-
-    background: #080808;
-
-}
-
-
-
-.achievements-container {
-
-    display: grid;
-
-    /* Responsive Layout */
-
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-
-    gap: 30px;
-
-}
-
-
-
-/* Card Base Styling */
-
-.achievement-card {
-
-    background: #111;
-
-    border-radius: 15px;
-
-    overflow: hidden; /* Image corners round rakhne ke liye */
-
-    border: 1px solid #222;
-
-    transition: 0.4s ease;
-
-    display: flex;
-
-    flex-direction: column; /* Image upar, text neeche */
-
-}
-
-
-
-/* Hover Effect */
-
-.achievement-card:hover {
-
-    transform: translateY(-10px); /* Card upar uthega */
-
-    border-color: var(--accent-color);
-
-    box-shadow: 0 10px 30px rgba(255, 87, 51, 0.15);
-
-}
-
-
-
-/* Image Container */
-
-.achievement-img {
-
-    width: 100%;
-
-    height: 200px; /* Fixed height taaki sab barabar dikhein */
-
-    overflow: hidden;
-
-    border-bottom: 1px solid #222;
-
-}
-
-
-
-.achievement-img img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover; /* Image stretch nahi hogi, crop hokar fit hogi */
-
-    transition: transform 0.5s ease;
-
-}
-
-
-
-/* Hover pe Image Zoom Hogi */
-
-.achievement-card:hover .achievement-img img {
-
-    transform: scale(1.1);
-
-}
-
-
-
-/* Text Content Area */
-
-.card-content {
-
-    padding: 25px;
-
-}
-
-
-
-.card-content h3 {
-
-    font-size: 20px;
-
-    font-weight: 600;
-
-    margin-bottom: 8px;
-
-    color: #fff;
-
-}
-
-
-
-.card-content .date {
-
-    font-size: 13px;
-
-    color: var(--accent-color); /* Theme color text */
-
-    font-weight: 600;
-
-    display: block;
-
-    margin-bottom: 12px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-
-}
-
-
-
-.card-content p {
-
-    font-size: 14px;
-
-    color: var(--gray-text);
-
-    line-height: 1.6;
-
-}
-
-
-
-/* --- Improved Contact Section --- */
-
-.contact {
-
-    padding: 100px 10%;
-
-    background: #050505;
-
-}
-
-
-
-.contact-wrapper {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 60px;
-
-    flex-wrap: wrap; /* Mobile friendly */
-
-}
-
-
-
-/* Left Side Styling */
-
-.contact-details {
-
-    flex: 1;
-
-    max-width: 500px;
-
-}
-
-
-
-.contact-details h3 {
-
-    font-size: 32px;
-
-    font-weight: 700;
-
-    margin-bottom: 15px;
-
-    color: #fff;
-
-}
-
-
-
-.contact-details p {
-
-    font-size: 16px;
-
-    color: var(--gray-text);
-
-    margin-bottom: 30px;
-
-    line-height: 1.6;
-
-}
-
-
-
-.contact-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 20px;
-
-}
-
-
-
-.contact-item i {
-
-    font-size: 20px;
-
-    color: var(--accent-color);
-
-    width: 40px;
-
-    height: 40px;
-
-    background: rgba(255, 255, 255, 0.05); /* Very subtle bg */
-
-    border-radius: 50%;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    transition: 0.3s;
-
-}
-
-
-
-.contact-item:hover i {
-
-    background: var(--accent-color);
-
-    color: #fff;
-
-    box-shadow: 0 0 10px var(--accent-color);
-
-}
-
-
-
-.contact-item span {
-
-    color: #ddd;
-
-    font-size: 16px;
-
-}
-
-
-
-/* Right Side: Floating Label Form */
-
-.contact-form-card {
-
-    flex: 1;
-
-    max-width: 500px;
-
-    background: #111; /* Card Background */
-
-    padding: 40px;
-
-    border-radius: 15px;
-
-    border: 1px solid #222;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-
-}
-
-
-
-/* Input Group Container */
-
-.input-group {
-
-    position: relative;
-
-    margin-bottom: 30px;
-
-}
-
-
-
-/* Styles for Input & Textarea */
-
-.input-group input, 
-
-.input-group textarea {
-
-    width: 100%;
-
-    padding: 10px 0;
-
-    font-size: 16px;
-
-    color: #fff;
-
-    border: none;
-
-    border-bottom: 2px solid #444; /* Sirf neeche line */
-
-    background: transparent;
-
-    outline: none;
-
-    transition: 0.3s;
-
-}
-
-
-
-/* The Label (Name, Email etc) */
-
-.input-group label {
-
-    position: absolute;
-
-    top: 10px;
-
-    left: 0;
-
-    color: var(--gray-text);
-
-    pointer-events: none; /* Mouse click label ke through input pe jaye */
-
-    transition: 0.3s ease;
-
-}
-
-
-
-/* Jab Input par click ho ya usme text ho -> Label upar jaye */
-
-.input-group input:focus ~ label,
-
-.input-group input:valid ~ label,
-
-.input-group textarea:focus ~ label,
-
-.input-group textarea:valid ~ label {
-
-    top: -20px;
-
-    font-size: 12px;
-
-    color: var(--accent-color);
-
-}
-
-
-
-/* Jab Input par focus ho -> Line color change ho */
-
-.input-group input:focus,
-
-.input-group textarea:focus {
-
-    border-bottom: 2px solid var(--accent-color);
-
-}
-
-
-
-/* Submit Button */
-
-.btn-send {
-
-    width: 100%;
-
-    padding: 15px;
-
-    background: var(--accent-color);
-
-    color: #fff;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    border: none;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-
-}
-
-
-
-.btn-send:hover {
-
-    background: transparent;
-
-    border: 2px solid var(--accent-color);
-
-    color: var(--accent-color);
-
-}
-
-
-
-.btn-send i {
-
-    margin-left: 10px;
-
-}
-
-
-
-/* Mobile Styling */
-
-@media (max-width: 768px) {
-
-    .contact-wrapper {
-
-        flex-direction: column; /* Mobile pe ek ke neeche ek */
-
-        gap: 40px;
-
-    }
-
-    
-
-    .contact-form-card {
-
-        width: 100%; /* Mobile pe full width */
-
-        padding: 25px;
-
-    }
-
-}
-
-/* --- Footer Section --- */
-
-.footer {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    flex-wrap: wrap; /* Mobile pe content wrap ho jaye */
-
-    padding: 20px 10%;
-
-    background: #000; /* Pitch black to separate from contact section */
-
-    border-top: 1px solid #222; /* Halka sa border separation ke liye */
-
-}
-
-
-
-/* Footer Text */
-
-.footer-text p {
-
-    font-size: 14px;
-
-    color: var(--gray-text);
-
-}
-
-
-
-.footer-text span {
-
-    color: var(--accent-color);
-
-    font-weight: 600;
-
-}
-
-
-
-/* Scroll Top Icon */
-
-.footer-iconTop a {
-
-    display: inline-flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 10px;
-
-    background: var(--accent-color);
-
-    border-radius: 8px;
-
-    transition: 0.5s ease;
-
-    text-decoration: none;
-
-}
-
-
-
-.footer-iconTop a i {
-
-    font-size: 18px;
-
-    color: #fff; /* White Arrow */
-
-    transition: 0.3s;
-
-}
-
-
-
-/* Hover Effect on Arrow */
-
-.footer-iconTop a:hover {
-
-    box-shadow: 0 0 15px var(--accent-color); /* Glow */
-
-    transform: translateY(-5px); /* Thoda upar uthega */
-
-}
-
-
-
-/* Mobile Responsiveness */
-
-@media (max-width: 768px) {
-
-    .footer {
-
-        flex-direction: column-reverse; /* Mobile pe arrow upar, text neeche */
-
-        gap: 20px;
-
-        text-align: center;
-
-        padding-bottom: 30px; /* Thodi jagah neeche */
-
-    }
-
-}
-
-
-
-.whatsapp-float {
-
-    position: fixed;
-
-    bottom: 40px;
-
-    right: 40px;
-
-    background-color: #25d366;
-
-    color: white;
-
-    width: 60px;
-
-    height: 60px;
-
-    border-radius: 50%;
-
-    text-align: center;
-
-    font-size: 35px;
-
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-
-    z-index: 1000;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    transition: 0.3s;
-
-} 
-
-
-
-.whatsapp-float:hover {
-
-    transform: scale(1.1);
-
-    background-color: #1ebe57;
-
-}
-:root {
-    --bg-color: #050507;       /* Deep Cosmic Black (Background) */
-    --bg-card: rgba(20, 20, 25, 0.6); /* Glassmorphism Dark (Cards) */
-    --text-color: #e2e8f0;     /* Soft White (Main Text) */
-    --accent-color: #2dd4bf;   /* Calm Teal / Cyan (Glow & Highlights) */
-    --gray-text: #94a3b8;      /* Slate Gray (Subtext) */
-    --border-soft: rgba(255, 255, 255, 0.08); /* Subtle Borders */
-}
-/* --- Particle Background Setup --- */
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1; /* Sabse peeche rakhne ke liye */
-    background-color: var(--bg-color); 
-}
-
-/* Ensure all website content stays above the particles */
-section, .navbar, .footer, .whatsapp-float {
-    position: relative;
-    z-index: 1;
-}
-body {
-    background-color: transparent; /* Isko transparent karein */
-    color: var(--text-color);
-    overflow-x: hidden;
-}
-
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100vh; /* 100% ki jagah 100vh best rehta hai */
-    top: 0;
-    left: 0;
-    z-index: -1; 
-    background-color: var(--bg-color); /* Aapka dark cosmic black yahan aayega */
-}
-
-/* Make sure inner sections are transparent so particles show through */
-.hero, .services, .projects, .skills, .achievements, .contact {
-    background: transparent !important; 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .status-pulse-red, .status-dot { animation: none; }
 }

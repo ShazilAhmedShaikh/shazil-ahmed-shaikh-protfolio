@@ -1,0 +1,8 @@
+# Local Backups
+legacy_v1/
+legacy_v2/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
