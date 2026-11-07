@@ -23,7 +23,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=3.2">
+
+  <script>
+    // Ensure trailing slash on GitHub Pages project directories so relative assets resolve properly
+    if (window.location.hostname.includes('github.io') && window.location.pathname && !window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
+      window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
+    }
+  </script>
 
   <script type="application/ld+json">
   {
@@ -710,9 +717,9 @@
     <span class="toast-text" id="toast-message">Email copied to clipboard: shazilahmedshaikh@gmail.com</span>
   </div>
 
-  <script src="./app.js" defer></script>
+  <script src="./app.js?v=3.2" defer></script>
   <!-- Swarm rebuild takeover engine. Loads the vendored engine, then hands
        control back to it. Disable for a clean page with ?swarm=off -->
-  <script src="./swarm-init.js" defer></script>
+  <script src="./swarm-init.js?v=3.2" defer></script>
 </body>
 </html>

@@ -123,7 +123,7 @@
     return new Promise(function (resolve, reject) {
       if (window[KEY]) return resolve(window[KEY]);
       var s = document.createElement("script");
-      s.src = "./swarm/swarm.js";
+      s.src = "./swarm/swarm.js?v=3.2";
       s.async = false;
       s.onload = function () {
         if (window[KEY]) resolve(window[KEY]);
